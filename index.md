@@ -30,8 +30,8 @@ Within this training we will cover two common approaches for burn mapping:
 ## Expected outcomes of the workshop
 
 #### Skills: 
-- Increased understanding of Google Earth Engine as a tool for burn mapping
 - Increased understanding of the basics of using Burn Indices and SAR for burn mapping
+- Increased understanding of Google Earth Engine as a tool for burn mapping
 - Working knowledge of sampling design and sample-based area estimation for estimating burned area
 
 #### Products:
