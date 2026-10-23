@@ -1,6 +1,6 @@
 title: Forest Monitoring Training - Liberia
 description: Materials for forest and mangrove monitoring in Liberia, February 2025
-baseurl: "/BurnProbabilityMappingTraining" # the subpath of your site, e.g. /blog
+baseurl: "/BurnMappingTraining" # the subpath of your site, e.g. /blog
 url: "https://sig-gis.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/images/SIG-logo-horizontal-2022.png"
 
