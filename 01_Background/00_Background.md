@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "1. Intoductory Background Materials"
+title: "1. Introductory Background Materials"
 permalink: /01_Background
 has_children: True
 nav_order: 2
