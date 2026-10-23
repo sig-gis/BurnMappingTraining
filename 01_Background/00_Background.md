@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "1. Introductory Background Materials"
-permalink: /01_Background
+permalink: /02_Background
 has_children: True
 nav_order: 2
 ---
