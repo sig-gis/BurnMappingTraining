@@ -2,7 +2,7 @@
 layout: page
 title: "4. Your Interpretation Key"
 permalink: /04_InterpretationKey
-nav_order: 5
+nav_exclude: true
 ---
 
 
