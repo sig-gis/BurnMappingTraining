@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Resources"
-permalink: /11_resources
+title: "Background"
+permalink: /O1_Background
 has_children: True
 nav_order: 17
 ---
