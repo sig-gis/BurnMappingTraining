@@ -38,7 +38,7 @@ Within this training we will cover two common approaches for burn mapping:
 - Burn area estimation results using a variety of methods
 
 #### Note...
-The lesson content for each workshop can be found in the tabs on the lefthand side panel. Additionally, you can find supplementary learning material under the **Resources** tab and a link to share/view photos from the workshop under the **Photos** tab. 
+The lesson content for each workshop can be found in the tabs on the lefthand side panel. Additionally, you can find supplementary learning material under the **Resources** tab. 
 
 
 # Support
