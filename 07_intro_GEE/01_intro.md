@@ -1,7 +1,7 @@
 ---
 layout: page
-title:  Introduction
-parent: "7. Intro to GEE"
+title:  Intro to GEE
+parent: "Background"
 nav_order: 1
 ---
 
