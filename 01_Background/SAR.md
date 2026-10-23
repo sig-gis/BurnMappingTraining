@@ -1,8 +1,8 @@
 ---
 layout: page
 title:  "SAR"
-parent: "Background"
-nav_order: 1
+parent: "1. Intoductory Background Materials"
+nav_order: 2
 ---
 
 # Synthetic Aperture Radar (SAR) Background
