@@ -13,7 +13,9 @@ GEE combines a multi-petabyte catalog of satellite imagery and geospatial datase
 
 The processing infrastructure automatically parallelizes analysis across many processors on many computers in Google data centers, reducing  processing times by orders of magnitude. In addition, the data is all centralized in the cloud. GEE provides a friendly interface to explore, retrieve and visualize satellite imagery without the need to download data.
 
-<img align="center" src="../images/intro-gee/fig1.png" vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig1.png" vspace="10" width="600">
+</p>
 
 <font size=2> Source: Google </font>
 
@@ -37,7 +39,9 @@ Types of data:
 - Climate and weather
 - Vector data (Basins, transportation network, etc.)
 
-<img align="center" src="../images/intro-gee/fig2.png" vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig2.png" vspace="10" width="600">
+</p>
 
 <font size=2> Source: Google </font>
 
@@ -47,7 +51,9 @@ To explore all datasets:
 - <a href="https://developers.google.com/earth-engine/datasets/catalog" target="_blank" rel="noopener noreferrer">https://developers.google.com/earth-engine/datasets/catalog</a>
 
 
-<img align="center" src="../images/intro-gee/fig3.png" vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig3.png" vspace="10" width="600">
+</p>
 
 <font size=2> Source: Google </font>
 
@@ -58,7 +64,9 @@ GEE is a powerful tool but it is also designed to be accessible to users who are
 ## Apps
 
 Codes can be converted into applications maintained on GEE:
-<img align="center" src="../images/intro-gee/fig4.png" vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig4.png" vspace="10" width="600">
+</p>
 
 <font size=2> Earth Engine Application: MODIS Ocean Temperature - Time Series Inspector. Source: <a href="https://google.earthengine.app/view/ocean" target="_blank" rel="noopener noreferrer">https://google.earthengine.app/view/ocean</a>. </font>
 
@@ -83,7 +91,9 @@ The Google Earth Engine Code Editor is essentially a web-based interface that al
 
 Once you have registered an Earth Engine account, you can open the <a href="https://code.earthengine.google.com/" target="_blank" rel="noopener noreferrer">Code Editor</a> and you'll see a screen like the one below.
 
-<img align="center" src="../images/intro-gee/fig5.png" vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig5.png" vspace="10" width="600">
+</p>
 
 The menu on the left consists of three tabs: `Scripts`, `Docs`, `Assets`: 
 - In the `Scripts` section you have all your code stored in repositories, folders, and files. You can organize your scripts by project, and also share access with other GEE users. 
@@ -94,7 +104,9 @@ In the center, you'll find the web-based code editor where you can insert your J
 
 On the right, we have three main panels: `Inspector`, `Console` and `Tasks`. In the Console area we can see code errors or printed values, this allows us to debug our script.
 
-<img align="center" src="../images/intro-gee/fig7eng.png" vspace="10" width="700">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig7eng.png" vspace="10" width="700">
+</p>
 
 
 ### Introduction to JavaScript (JS) for the Code Editor
@@ -120,27 +132,39 @@ print('Hello World');
 
 The above line of code uses the JS print function (`print`) to print the text "Hello World" to the screen. Once you enter the code, click the `Run` button. The output will be displayed in the top right panel under the `Console` tab.
 
-<img align="center" src="../images/intro-gee/fig16.png" vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig16.png" vspace="10" width="600">
+</p>
 
 Now you know where to write your code, how to run it, and where to look for the result. You've just written your first Earth Engine script, so let's save it. Click the `Save` button.
 
-<img align="center" src="../images/intro-gee/fig17.png" vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig17.png" vspace="10" width="600">
+</p>
 
 If this is your first time in Code Editor, a screen will appear to create your home directory: a unique ID. From here you can create folders and code repositories. You can choose a name of your choice, but remember that it **cannot be changed** and will always be associated with your account. A good choice for the name would be the username of your Google account.
 
-<img align="center" src="../images/intro-gee/fig6.png" vspace="10" width="400">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig6.png" vspace="10" width="400">
+</p>
 
 Once your home folder is created, you will be prompted to enter a new repository. A repository can help you organize and share code. Your account can have multiple repositories and each repository can have multiple scripts inside it.
 
-<img align="center" src="../images/intro-gee/fig18.png" vspace="10" width="400">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig18.png" vspace="10" width="400">
+</p>
 
 Finally, you will be able to save your script inside the newly created repository. Enter the name of your choice and click `OK`.
 
-<img align="center" src="../images/intro-gee/fig19.png" vspace="10" width="400">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig19.png" vspace="10" width="400">
+</p>
 
 Once the script is saved, it will appear in the script manager panel (under `Owner`). Scripts are saved in the cloud and will always be available to you when you open the Code Editor.
 
-<img align="center" src="../images/intro-gee/fig20.png" vspace="10" width="400">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig20.png" vspace="10" width="400">
+</p>
 
 Congratulations! You have created your first script.
 
@@ -217,7 +241,9 @@ print(cityData);
 
 The object will be printed to the `Console`. You can see that instead of a numeric index, each element has a label. This is known as the `key` and can be used to retrieve the value of an object.
 
-<img align="center" src="../images/intro-gee/fig21.png" vspace="10" width="300">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig21.png" vspace="10" width="300">
+</p>
 
 > **_NOTE:_**
 >
@@ -254,7 +280,9 @@ As you type the code, it's helpful to add some text to explain the code. It is a
 A comment can be added by selecting multiple lines and using a shortcut (`Ctrl + /` on Windows, `Cmd + /` on Mac). It can also be useful when debugging code to stop the execution of certain parts of the script.
 
 
-<img align="center" src="../images/intro-gee/fig23.png" vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig23.png" vspace="10" width="600">
+</p>
 
 ### Complete code
 
@@ -266,7 +294,9 @@ The Earth Engine API is extensive, providing objects and methods to do everythin
 
 You can switch to the `Docs` tab to see the API functions grouped by object types (or in the <a href="https://developers.google.com/earth-engine/apidocs" target="_blank" rel="noopener noreferrer">Earth Engine documentation</a>). API functions are prefixed with `ee` (for Earth Engine).
 
-<img align="center" src="../images/intro-gee/fig15.png" vspace="10" width="300">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig15.png" vspace="10" width="300">
+</p>
 
 
 
@@ -274,29 +304,44 @@ Fundamental Earth Engine Concepts regarding remote sensing include:
 
 - Image (`ee.Image`): The fundamental raster data type in Earth Engine. Image with a stack of georeferenced bands. Each band has its own Mask, Projection, Resolution, and a list of properties including date, bounding box, etc.
 
-     <img align="center" src="../images/intro-gee/fig8.png" vspace="10" width="150">
+   <p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig8.png" vspace="10" width="150">
+</p>
 
 - Image Collection (`ee.ImageCollection`): A collection of images
 
-     <img align="center" src="../images/intro-gee/fig9.png" vspace="10" width="150">
+     <p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig9.png" vspace="10" width="150">
+</p>
 
 - Geometry (`ee.Geometry`): The fundamental vector data type in Earth Engine. Line / Point / Polygon / etc.
 
-     <img align="center" src="../images/intro-gee/fig10.png" vspace="10" width="150">
+    <p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig10.png" vspace="10" width="150">
+</p>
 
 - Feature (`ee.Feture`): A geometry with properties. Line/Point/Polygon/etc,
 Property List
 
-     <img align="center" src="../images/intro-gee/fig11.png" vspace="10" width="150">
+     <p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig11.png" vspace="10" width="150">
+</p>
 
 - Features Collection (`ee.FeatureCollection`): A collection of Features (geometries with properties)
 
-     <img align="center" src="../images/intro-gee/fig12.png" vspace="10" width="150">
+     <p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig12.png" vspace="10" width="150">
+</p>
 
 - Reducers (`ee.Reducer`): Object used for aggregations and numerical calculations (for bands, time series, features)
 
-     <img align="center" src="../images/intro-gee/fig13.png" vspace="10" width="150">
-     <img align="center" src="../images/intro-gee/fig14.png" vspace="10" width="150">
+     <p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig13.png" vspace="10" width="150">
+</p>
+
+     <p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig14.png" vspace="10" width="150">
+</p>
 
 For more information access the <a href="https://developers.google.com/earth-engine/guides/objects_methods_overview" target="_blank" rel="noopener noreferrer">EE objects and methods site</a>.
 
@@ -315,7 +360,9 @@ To do calculations in Earth Engine, you would not write `var c = a + b` to add t
 
 Looking at the `Docs` tab, you will find a group of methods that can be called on an `ee.Number`. Expand to see the various functions available for working with numbers. In the function list, there is an addition function (`add`) to add two numbers. That's what you use to add `a` and `b`.
 
-<img align="center" src="../images/intro-gee/fig24.png" vspace="10" width="300">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig24.png" vspace="10" width="300">
+</p>
 
 The following code shows the syntax and prints the result, which of course is the value 3.
 
@@ -327,7 +374,9 @@ print(result);
 
 Let's say you're working on a task where you need to create a list of years from 1980 to 2020 with an interval of five years. The first step is to switch to the `Docs` tab and open the `ee.List` module to browse through the features. You will notice a function `ee.List.sequence`. Clicking on it will bring up the documentation for the function.
 
-<img align="center" src="../images/intro-gee/fig25.png" vspace="10" width="500">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig25.png" vspace="10" width="500">
+</p>
 
 The `ee.List.sequence` function can generate a sequence of numbers from a given `start value` to the `end value`. It also has an optional parameter `step` to indicate the increment between each number. We can create an `ee.List` of numbers representing the years from 1980 to 2020, counting by 5: `start` = 1980, `end` = 2020 and `step` = 5.
 
@@ -338,7 +387,9 @@ print(yearsList);
 
 The output printed to the `Console` will show that the `yearList` variable contains the list of years with the correct interval.
 
-<img align="center" src="../images/intro-gee/fig26.png" vspace="10" width="500">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig26.png" vspace="10" width="500">
+</p>
 
 Now let's look at an example of reduction (`ee.Reducer`). `ee.Reducer` is the object used for aggregations and calculations. We can create a list with numbers from 1 to 5 and calculate the average of these numbers. For that, we use the `reduce()` function for lists and choose the `ee.Reducer` (look in the `Docs` for the `ee.Reducer.mean()` reducer). Note that we can use the same `ee.List.sequence` function to create the list but without the need to define the `step` since `step` has the value 1 by default.
 
@@ -368,7 +419,9 @@ var satellite = ee.String('2A');
 
 > *Hint*: You could use the `cat` function of the `ee.String` module to "concatenate" (join) the two `strings`. More information about all functions is available in the `Docs` tab.
 
-<img align="center" src="../images/intro-gee/fig27.png" vspace="10" width="400">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-gee/fig27.png" vspace="10" width="400">
+</p>
 
 ### Challenge 2
 
