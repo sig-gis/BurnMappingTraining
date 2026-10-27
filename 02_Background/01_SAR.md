@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "SAR"
+title:  "Intro to SAR"
 parent: "2. Introductory Background Materials"
 permalink: /SAR_intro
 nav_order: 2
