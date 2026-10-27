@@ -39,6 +39,9 @@ You'll be prompted to complete the following steps. If you already have a projec
 - Confirm your project information.
 
 
+<img align="center" src="images/setup/GEE_cloud_project_setup1.png" vspace="10" width="600">
+
+
 
 
 
