@@ -41,6 +41,6 @@ Within this training we will cover two common approaches for burn mapping:
 The lesson content for each workshop can be found in the tabs on the lefthand side panel. Additionally, you can find supplementary learning material under the **Resources** tab. 
 
 
-# Support
+## Support
 
 This workshop was created by Spatial Informatics Group, with support from SERVIR and SilvaCarbon
