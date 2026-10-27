@@ -13,7 +13,9 @@ nav_order: 2
 ## What is RADAR?
 As a recap, remote sensing is the process of gaining information about an object or an area without directly being in contact with that object. Sensors take advantage of the electromagnetic radiation reflected or emitted from the Earth’s surface to monitor and map changes to the surface of the Earth over time. Thus far, we have worked with remote sensing data that uses energy in the visible and infrared portion of the electromagnetic spectrum. RADAR, which is actually an acronym that stands for Radio Detection and Ranging, uses energy that falls within the microwave portion of the spectrum. These longer energy wavelengths equip radar data with a number of advantages over optical remote sensing data that we will explore throughout this section.
 
-<img align="center" src="../images/intro-sar/electromagnetic-spectrum.jpg"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/electromagnetic-spectrum.jpg"  vspace="10" width="600">
+</p>
 
 <font size=2> Electromagnetic spectrum. Image Source: Google sites. </font>
 
@@ -26,7 +28,9 @@ Let’s start with the positive: what can radar achieve that optical remote sens
 4. **Minimal atmospheric effects.** Remember the many levels of processing optical remote sensing data must go through before it can be used? Radar data must also be pre-processed, but its longer wavelengths do not get affected by the same atmospheric conditions that can make optical imagery appear hazy or distorted.
 5. **Dielectric and structural sensitivity.** Radar data can pick up on the dielectric and structural properties of an object, which can make it easier to distinguish between liquid and frozen water, for instance.
 
-<img align="center" src="../images/intro-sar/radar-smoky-clear.gif"  vspace="10" width="600">
+<p align="center">
+  <img src="{{ site.baseurl }}/images/intro-sar/radar-smoky-clear.gif" vspace="10" width="600" alt="Radar smoky vs clear comparison">
+</p>
 
 <font size=2> Optical imagery (left) vs. radar imagery (right) of the Kliuchevskoi Volcano erupting. Source: Michigan Tech Volcanology </font>
 
