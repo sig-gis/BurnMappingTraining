@@ -30,6 +30,8 @@ Follow the steps below if you want to register your own GEE cloud project:
 
 Text adapted from: [GEE Developers Quick Start Guide](https://developers.google.com/earth-engine/guides/quickstart_javascript). See this resource for the most updated information on cloud project creation.
 
+Further information on noncommercial cloud project requirements can be found [here](https://earthengine.google.com/noncommercial/).
+
 **Register or create a Google Cloud Project [here](https://console.cloud.google.com/earth-engine).**
 You'll be prompted to complete the following steps. If you already have a project registered for Earth Engine access, you can choose to use that one (but be aware if it is a noncommercial or commercial cloud project).
 
