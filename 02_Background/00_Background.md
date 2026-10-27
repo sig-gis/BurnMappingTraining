@@ -3,7 +3,7 @@ layout: page
 title: "2. Introductory Background Materials"
 permalink: /02_Background
 has_children: True
-nav_order: 2
+nav_order: 3
 ---
 
 ## Objectives 
