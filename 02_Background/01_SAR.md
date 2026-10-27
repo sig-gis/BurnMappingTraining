@@ -48,7 +48,9 @@ This concept should sound familiar, as we briefly discussed it in the Introducti
 
 Optical sensors are called passive sensors because they rely solely on energy from an outside source (e.g, the sun) to capture their measurements. This reliance on outside energy sources limits these sensors by the effects of the atmosphere. Energy that is simply reflected from the surface of the Earth cannot penetrate things such as cloud cover or fog, and thus makes it difficult to gather data consistently in areas that experience this type of weather often.
 
-<img align="center" src="../images/intro-sar/passive-rs.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/passive-rs.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Diagram of passive remote sensing. *Source: NASA Applied Remote Sensing Training Program* </font>
 
@@ -56,7 +58,9 @@ Radar is a form of active remote sensing. These sensors provide their own artifi
 
 Imaging radars are side-looking, which means they transmit energy at a 90 degree angle in order to differentiate between two objects on the ground. By transmitting energy at an angle, it allows energy to bounce off of objects on the ground and reach the radar at different times so that the two objects can be distinguished. 
 
-<img align="center" src="../images/intro-sar/side-looking-radar.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/side-looking-radar.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Side-looking radar. Source: Side looking airborne radar, Charly Whisky. </font>
 
@@ -73,8 +77,9 @@ In addition to the time at which the signal is received, which is referred to as
 ### What is SAR?
 Radars possess two types of resolution: (1) **Range (across track) resolution** defines the ability of the radar to distinguish between two targets perpendicular to the path of the sensor that are close in range. This type of resolution is determined by length of pulse sent out by the transmitter. (2) **Azimuth (along-track) resolution** defines the ability of the radar to distinguish between two objects parallel to the path of the sensor that are close together. This resolution is determined by the beam length, which is inversely proportional to the length of the antennae, or aperture. 
 
-<img align="center" src="../images/intro-sar/sar-resolution.png"  vspace="10" width="600">
-
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/sar-resolution.png"  vspace="10" width="600">
+</p>
 <font size=2> SAR resolution. *Source: MathWorks* </font>
 
 A longer antennae, then, results in a narrower beam and thus finer resolution. Sending extremely long antennas out into space, however, is highly unrealistic. Instead, scientists leveraged the Doppler shift associated with the motion of the aircraft to simulate a very long antennae. This simulation creates a “synthetic aperture.” Synthetic aperture radar, or SAR, is able to generate higher resolution images compared to the actual length of the antennae. 
@@ -95,11 +100,15 @@ There are plenty of different characteristics that distinguish sensors from each
 | L    | 15.0 to 30.0    | agriculture, forestry, soil moisture     |
 | P    | 30.0 to 100.0   | biomass, soil moisture, penetration      |
 
-<img align="center" src="../images/intro-sar/band-penetration.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/band-penetration.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Surface penetration based on wavelength. Source: SAR 101: An Introduction to Synthetic Aperture Radar, Daniel Hogan*</font>
 
-<img align="center" src="../images/intro-sar/wavelength-sensitivity-canopy.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/wavelength-sensitivity-canopy.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Sensitivity to canopy per SAR band. *Source: <a href="https://docs.google.com/presentation/d/e/2PACX-1vTT9Cw8ROlIPMgN3_k_M-zpPC97nrmuDf9dRy3q98xY-lLvi3HPlDaGbcR_pfbJNs4TBDZli9BC8WKL/pub?start=false&loop=false&delayms=3000&slide=id.g475b0deb4d_0_90" target="_blank" rel="noopener noreferrer">Geo For Good 2019</a>* </font>
 
@@ -110,13 +119,17 @@ There are plenty of different characteristics that distinguish sensors from each
 * HV: horizontal transmit, vertical receive
 * VH: vertical transmit, horizontal receive
 
-<img align="center" src="../images/intro-sar/polarizations.png"  vspace="10" width="400">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/polarizations.png"  vspace="10" width="400">
+</p>
 
 <font size=2> Horizontal and vertical polarization of an electromagnetic wave horizontal polarization is defined as the state in which the electric vector propagates parallel to the earth's surface and vertical polarization is the propagation orthogonal to the direction of propagation. Souce: Lee & Pottier 2009.</font>
 
 **Incidence angle.** The final factor to consider is the incidence angle, &theta;, which is the angle between the direction of the radar beam and the plan perpendicular to the surface of the Earth.
 
-<img align="center" src="../images/intro-sar/incidence-angle.png"  vspace="10" width="400">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/incidence-angle.png"  vspace="10" width="400">
+</p>
 
 <font size=2> Incidence angle. Source: NASA Applied Remote Sensing Training Program </font>
 
@@ -131,15 +144,21 @@ The factors we discussed above are all radar properties that will affect the bac
 3. **Double bounce reflection.** This type of reflection occurs when energy bounces off a smoother surface and then bounces again on a nearby, vertical object so that most of the energy scatters back to the radar. These areas appear very bright. Ex: urban areas, inundation
 4. **Volume scattering.** This type of scattering occurs within a volume or medium. Energy bounces of a number of different elements within the medium to cause wide amounts of scattering, some of which returns to the radar. The brightness can vary, but is usually moderately bright. Ex: snowpack, forests.
 
-<img align="center" src="../images/intro-sar/backscattering-mechanism.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/backscattering-mechanism.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Backscattering mechanisms. Source: Advantages and Applications of Synthetic Aperture Radar as a Decision Support Tool, Molthan et al., NASA </font>
 
-<img align="center" src="../images/intro-sar/sar-hb-backscattering.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/sar-hb-backscattering.png"  vspace="10" width="600">
+</p>
 
 <font size=2> 9 Schematic sketch of the three main scattering types considered for SAR data. Source: SAR Handbook </font>
 
-<img align="center" src="../images/intro-sar/relative-scattering-objects.png"  vspace="10" width="400">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/relative-scattering-objects.png"  vspace="10" width="400">
+</p>
 
 <font size=2> Source: SAR Handbook </font>
 
@@ -161,7 +180,9 @@ o (dB) = 10.Log10 (energy ratio)
 whereby the energy ration is the ration between the received energy by the sensor and the
 energy reflected in an isotropic way.
 
-<img align="center" src="../images/intro-sar/radar-measures.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/radar-measures.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Source: <a href="https://www.fao.org/3/cb9049en/cb9049en.pdf" target="_blank" rel="noopener noreferrer">FAO</a> </font>
 
@@ -187,28 +208,38 @@ The data values collected by SAR systems can be distorted in two primary ways: g
 ### Geometric
 **Slant range.** This type of distortion is caused by the fact that the distance between the radar antenna and the target, known as the slant range, is not constant along the image. This happens because the radar antenna is not perpendicular to the ground, but rather it is pointed at an angle (side-looking). Thus, within a radar image, objects that are closer to the radar system appear compressed while objects farther away are more stretched out. The image does not represent the true horizontal, ground range distance on the surface of the Earth. In order to measure distances between objects, this distortion must be corrected.
 
-<img align="center" src="../images/intro-sar/slant-vs-ground-range.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/slant-vs-ground-range.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Slant range vs ground range. Source: Tiago Silva, Quantifying Antarctic Icebergs and their Melting in the Ocean. </font>
 
 
 **Layover.** This type of distortion occurs more often in mountainous areas. This error will cause features to appear at the wrong location or in the wrong direction because of the timing in which the radar beam hits the object. For example, a radar beam may hit the top of a tall mountain before it hits the base of the mountain. Since it reached the top of the mountain first, it will receive the signal from the top of the mountain earlier than the signal from the base of the mountain, and will thus appear shifted towards the radar system and look as though the top of the mountain is *laid over* the base.
 
-<img align="center" src="../images/intro-sar/geometric-distortions.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/geometric-distortions.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Geometric distortion on synthetic aperture radar (SAR) imagery as the effect of terrain. Courtesy of Lillesand, T.M.; Kiefer, R.W.; Chipman, J.W. Remote Sensing and Image Interpretation, 7th ed.; John Wiley &Sons, Inc.: Hoboken, NJ, USA, 2015. </font>
 
-<img align="center" src="../images/intro-sar/geometric-effects.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/geometric-effects.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Examples of Geometric Effects in SAR Imagery. Source: ERS, ESA. </font>
 
 **Foreshortening.** This type of distortion occurs when an object is tilted towards the radar system, as in mountainous areas. The angle between the base and the top of the object will appear compressed due to the timing in which the radar beam hits the object and the fact that radars have slant range distortions. Foreshortening severity can vary, and is most severe when the radar beam is directly perpendicular to the object’s slope. For example, if a radar beam hits the base of a mountain before it hits the top of the mountain, the distance between the base and the top of the mountain will appear much shorter than the actual physical distance because of slant range distortions. 
 
-<img align="center" src="../images/intro-sar/foreshortening-correction.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/foreshortening-correction.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Foreshortening before (left) and after (right) correction. Source: NASA Applied Remote Sensing Training Program</font>
 
-<img align="center" src="../images/intro-sar/sar-hb-geometric.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/sar-hb-geometric.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Source: SAR Handbook. </font>
 
@@ -217,21 +248,27 @@ The data values collected by SAR systems can be distorted in two primary ways: g
 
 **Topographic effects.** Topography, especially complex topography, may skew the backscatter values received by the radar system. Steep slopes can, for instance, cause a brightening effect. These effects must be removed in order to capture data related to the characteristics of the Earth you are interested in studying, such as vegetation or soil moisture. 
 
-<img align="center" src="../images/intro-sar/radiometric-before-after.jpg"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/radiometric-before-after.jpg"  vspace="10" width="600">
+</p>
 
 <font size=2> Radiometric correction: before (left) and after (right). Source: Alaska Satellite Facility </font>
 
 ### Additional Challenges
 **Shadow.** This type of error is conceptually similar to that of clouds in optical imagery. When the radar beam illuminates a large or steep vertical object, such as a mountain or tall building, it may be unable to illuminate the ground on the farther side of the object, resulting in shadow effects on the image. The effect is particularly pronounced at the top of the vertical object, where the incidence angle is larger. Although you can apply some shadow corrections and attempt to fill in the data gaps using interpolation methods, many researchers choose to treat the shadows as missing data – just like the masked out portions of cloudy images.
 
-<img align="center" src="../images/intro-sar/radar-shadow.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/radar-shadow.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Shadow in SAR imagery. Source: Jolanda Patruno, Polarimetric RADARSAT-2 and ALOS PALSAR multi-frequency analysis over the archaeological site of Gebel Barkal (Sudan). </font>
 
 
 **Speckle.** This error is the result of random noise and interference from the radar waves that occurs within the pixel cell. It results in a grainy, almost salt-and-pepper image appearance. There are lots of different gray tones that may appear within a single, uniform surface as the result of speckling.  These variations must be filtered in order to improve the visual quality of the data and make it easier to identify features. Unfortunately, the correction method often used to reduce speckling reduces the resolution, so you must balance the visual quality of the image with the resolution of data.
 
-<img align="center" src="../images/intro-sar/radar-speckle.jpg"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/radar-speckle.jpg"  vspace="10" width="600">
+</p>
 
 <font size=2> Speckle in SAR imagery. Source: Natural Resources Canada </font>
 
@@ -269,7 +306,9 @@ The different <a href="https://sentinel.esa.int/web/sentinel/missions/sentinel-1
 - Extra-Wide swath (EW)
 - Wave mode (WV).
 
-<img align="center" src="../images/intro-sar/s1Modes.jpg"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/s1Modes.jpg"  vspace="10" width="600">
+</p>
 
 ## Stripmap Mode
 Stripmap imaging mode is provided for continuity with ERS and Envisat missions. Stripmap provides coverage with a 5 m by 5 m resolution over a narrow swath width of 80 km. One of six imaging swaths can be selected by changing the beam incidence angle and the elevation beamwidth.
@@ -289,7 +328,9 @@ Wave mode acquisitions are composed of stripmap imagettes of 20 km by 20 km, acq
 
 # Orbits
 
-<img align="center" src="../images/intro-sar/orbits.png"  vspace="10" width="600">
+<p align="center">
+<img src="{{ site.baseurl }}/images/intro-sar/orbits.png"  vspace="10" width="600">
+</p>
 
 <font size=2> Source: <a href="https://site.tre-altamira.com/insar" target="_blank" rel="noopener noreferrer">Tre Altamira</a>. 2022. In: InSar at a glance. </font>
 
