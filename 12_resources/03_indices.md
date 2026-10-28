@@ -25,8 +25,10 @@ Many of the most common ones are called "normalized difference" indices, in whic
 
 For example, the Normalized Difference Water Index is good for mapping water level changes during flooding events; the Normalized Burn Ratio is good at detecting soil brightness; and the Normalized Difference Vegetation Index is good for tracking changes in vegetation (although this index does saturate quickly). In some cases, it is best to use derived band combinations that have been customized to represent the phenomenon of interest, such as using the Normalized Difference Fraction Index to monitor forest degradation.
 
-In our LULC classification workflow, we calculate the following indices:
+Commonly used indices:
 
+* **NBR:** Normalized Burn Ratio - highlights the extent of recent burns and estimates burn severity; calculated using SWIR2 and NIR bands
+  
 * **NDVI:** Normalized Difference Vegetation Index - highlights vegetation health and density; calculated using the NIR and red bands
 
 * **LSWI:** Land Surface Water Index - highlights vegetation and soil water content; calculated using the NIR and SWIR1 bands
