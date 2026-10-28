@@ -2,7 +2,7 @@
 layout: page
 title:  "Cloud Masking"
 parent: "Resources"
-permalink: "Cloud_Masking"
+permalink: "/Cloud_Masking"
 nav_order: 3
 ---
 
