@@ -2,7 +2,7 @@
 layout: page
 title: "Resources"
 permalink: /Resources
-has_children: True
+has_children: False
 nav_order: 17
 ---
 
