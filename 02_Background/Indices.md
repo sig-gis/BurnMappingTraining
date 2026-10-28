@@ -1,7 +1,8 @@
 ---
 layout: page
 title:  "Intro to Spectral Indices"
-parent: "2. Background"
+parent: "2. Introductory Background Materials"
+permalink: /Indices_intro
 nav_order: 2
 ---
 
