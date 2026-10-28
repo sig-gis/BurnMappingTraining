@@ -43,5 +43,5 @@ Commonly used indices:
 
 * **RVI:** Radar Vegetation Index - highlights vegetation density and structure; calculated using the HV, HH, and VV polarizations
 
-<img align="center" src="../images/indices/formulas.png"  vspace="10" width="600">
+<img align="center" src="../images/indices/formulas_v2.png"  vspace="10" width="600">
 
