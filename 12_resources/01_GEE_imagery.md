@@ -2,7 +2,7 @@
 layout: page
 title:  Adding GEE Imagery
 parent: "Resources"
-permalink: "/Resources"
+permalink: "/GEE_Imagery"
 nav_order: 2
 ---
 
