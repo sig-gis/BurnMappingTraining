@@ -34,6 +34,7 @@ exclude:
   - Unused_00_resources.md
   - 02_intro_machine_learning.md
   - 04_InterpretationKey.md
+  - 00_agenda_sepal.md
   - 09_class_GEE.md
   - 13_photos.md
   - 14_survey.md
