@@ -8,7 +8,7 @@ nav_order: 3
 
 # Cloud Masking Example Scripts
 
-In the <a href="https://code.earthengine.google.com/?accept_repo=users/ee-scripts/Liberia_Forest_SIG_workshops" target="_blank" rel="noopener noreferrer">GEE repository</a> for this workshop, you will find a folder called `cloudMasking_examples` containing some scripts with example cloud masking scripts called `HLS_cloudMasking`, `Planet_cloudMasking`, and `Sentinel_Landsat_cloudMasking`. You can use these scripts to compare various cloud masking techniques with the available optical imagery.
+In the <a href="https://code.earthengine.google.com/?accept_repo=users/ee-scripts/Liberia_Forest_SIG_workshops" target="_blank" rel="noopener noreferrer">GEE repository</a> for this workshop, you will find a folder called `cloudMasking_examples` containing some scripts with example cloud masking scripts called `HLS_cloudMasking`, `Sentinel_Landsat_cloudMasking`, and `Planet_cloudMasking`. You can use these scripts to compare various cloud masking techniques with the available optical imagery. Note, for Planet imagery access you need to make a Planet account and connect it to your GEE account.
 
 ## Sentinel and Landsat
 
