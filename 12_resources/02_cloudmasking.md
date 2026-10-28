@@ -2,7 +2,8 @@
 layout: page
 title:  "Cloud Masking"
 parent: "Resources"
-nav_order: 2
+permalink: "Cloud_Masking"
+nav_order: 3
 ---
 
 # Cloud Masking Example Scripts
