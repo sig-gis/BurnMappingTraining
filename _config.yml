@@ -31,6 +31,7 @@ last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https:/
 
 
 exclude:
+  - Unused_00_resources.md
   - 02_intro_machine_learning.md
   - 04_InterpretationKey.md
   - 13_photos.md
