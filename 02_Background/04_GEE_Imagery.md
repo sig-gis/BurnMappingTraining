@@ -2,7 +2,7 @@
 layout: page
 title:  (Optional) Obtaining GEE Imagery
 parent: "2. Introductory Background Materials"
-nav_order: 4
+nav_order: 5
 ---
 
 If you would like extra practice on adding imagery into GEE before beginning the training you can read through this section and try the code blocks in a blank GEE script.
