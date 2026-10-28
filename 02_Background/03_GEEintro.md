@@ -3,7 +3,7 @@ layout: page
 title:  Intro to GEE
 parent: "2. Introductory Background Materials"
 permalink: /GEE_intro
-nav_order: 3
+nav_order: 4
 ---
 
 
