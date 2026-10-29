@@ -4,6 +4,8 @@ title: "8. Classification with SEPAL"
 permalink: /08_class_SEPAL
 has_children: True
 nav_order: 9
+nav_exclude: true
+published: false
 ---
 
 # Classification with SEPAL
