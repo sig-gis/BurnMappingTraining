@@ -10,7 +10,11 @@ nav_order: 2
 
 All radiation, or electromagnetic energy, travels in waves or varying sizes. Those differences can be viewed on the electromagnetic spectrum below. 
 
-<img align="center" src="../images/indices/electromagneticspectrum.png"  vspace="10" width="700">
+
+<p align="center">
+  <img src="{{ site.baseurl }}/images/indices/electromagneticspectrum.png"  vspace="10" width="700">
+</p>
+
 
 Optical remote sensing instruments such as Landsat and Sentinel 2 measure the reflectance of light from the surface of the earth, capturing specific wavelengths on the spectrum of visible to infrared light. These are what we call "bands." We can plot out how much of different wavelengths of light are reflected and absorbed by different land surface types, giving us the "spectral signatures" of those objects.
 
@@ -18,7 +22,9 @@ A common example is healthy, green vegetation, where red and blue wavelengths ar
 
 Looking at the spectral signature curves of different land cover types, we can begin to pick out which wavelengths of light can be most useful in making indices that distinguish between these different objects.
 
-<img align="center" src="../images/indices/spectralsignatures.png"  vspace="10" width="700">
+<p align="center">
+  <img src="{{ site.baseurl }}/images/indices/spectralsignatures.png"  vspace="10" width="700">
+</p>
 
 We can do calculations with specific bands in order to highlight differences between them and normalize the noise between images from different dates or locations. These transformations are called spectral indices. 
 
@@ -44,5 +50,7 @@ Commonly used indices:
 
 * **RVI:** Radar Vegetation Index - highlights vegetation density and structure; calculated using the HV, HH, and VV polarizations
 
-<img align="center" src="../images/indices/formulas_v2.png"  vspace="10" width="600">
+<p align="center">
+  <img src="{{ site.baseurl }}/images/indices/formulas_v2.png"  vspace="10" width="600">
+</p>
 
