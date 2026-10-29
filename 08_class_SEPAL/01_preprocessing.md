@@ -3,6 +3,8 @@ layout: page
 title:  "Preprocessing Imagery"
 parent: "8. Classification with SEPAL"
 nav_order: 1
+nav_exclude: true
+published: false
 ---
 
 # Preprocessing Imagery in SEPAL
