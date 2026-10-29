@@ -6,9 +6,9 @@ has_children: True
 nav_order: 3
 ---
 
-## Objectives 
-1. Understand types of drones and sensors for photogrammetry
-2. Understand the basics of the drone flight planning process, including safety, logistics, and flight parameters.
-3. Understand the basics of conducting a drone flight.
-4. Understand the basics of doing drone image processing, including making orthomoasics and digital surface models.
-5. Explore a few options for data analysis.  
+## Background Materials
+A basic understanding of some core concepts of remote sensing and the tool used in this training, Google Earth Engine, are an essential first step before diving in to the materials and scripts of the training. In these three background modules you will learn the basics of:
+
+1. Spectral Indices - used for understanding land surface qualities and changes when using optical remote sensing imagery
+2. Synthetic Aperture Radar (SAR) - a specific type of active remote sensing, capable of making observations through clouds, used in this training for monitoring burned areas
+3. Google Earth Engine - the analysis tool used for the training, a cloud based coding platform which gives users access to a large remote sensing data catalog and fast cloud-based parallel computing
