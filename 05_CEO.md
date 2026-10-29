@@ -3,6 +3,7 @@ layout: page
 title: "5. CEO"
 permalink: /05_CEO
 nav_order: 6
+nav_exclude: true
 ---
 
 
