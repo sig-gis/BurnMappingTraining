@@ -4,6 +4,8 @@ title:  "Area Estimation and Uncertainty Analysis"
 parent: "11. Sample-Based Area Estimation"
 permalink: /AnalysisAreaEstimation
 nav_order: 4
+nav_exclude: true
+published: false
 ---
 
 # Sample-Based Area Estimation and Uncertainty Analysis
