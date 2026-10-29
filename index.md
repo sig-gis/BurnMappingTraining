@@ -12,6 +12,8 @@ Within this training we will cover two common approaches for burn mapping:
 1. Burn scar mapping with optical imagery: The normalized burn ratio (NBR) is an index generated from the infrared bands of optical imagery; these wavelengths of light are absorbed and reflected differently by different land cover types, providing a way to visualize the extent of healthy vegetation and bare soil to monitor fire-related changes in vegetation over time. It is the most well known and commonly used index to detect fire-based disturbances on the landscape. Differencing the NBR maps from two points in time is called dNBR and is a widely accepted method of indicating fire impact within a time period of interest. Maps of dNBR can be produced quickly using a GEE script. 
 2. Burn scar mapping with radar imagery: If cloudy conditions are a significant issue (which is common in the tropics), synthetic aperture radar (SAR) imagery can also be used to map burn scars. SAR uses longer wavelengths of light that - unlike optical imagery - penetrate clouds; SAR captures structural and textural differences in land cover types, providing another way to visualize the extent of vegetation and bare soil. It can also be differenced from two points in time to determine fire impact within a time period of interest. SAR is considered a more advanced technique and although it has excellent benefits for combatting clouds, it can be difficult to use in rapidly changing environments.
 
+#### Note...
+The lesson content for each workshop can be found in the tabs on the lefthand side panel. Additionally, you can find supplementary learning material under the **Resources** tab. 
 
 ## Objectives
 - Provide training in the use of Google Earth Engine for remote sensing analyses.
@@ -24,8 +26,6 @@ Within this training we will cover two common approaches for burn mapping:
 
 <span style="color: red;"> **Link to add GEE Repository**</span>: [https://code.earthengine.google.com/?accept_repo=users/ee-scripts/burn_mapping_training](https://code.earthengine.google.com/?accept_repo=users/ee-scripts/burn_mapping_training)
 
-<br />
-
 
 ## Expected outcomes of the workshop
 
@@ -36,9 +36,6 @@ Within this training we will cover two common approaches for burn mapping:
 
 #### Products:
 - Burn area estimation results using a variety of methods
-
-#### Note...
-The lesson content for each workshop can be found in the tabs on the lefthand side panel. Additionally, you can find supplementary learning material under the **Resources** tab. 
 
 
 ## Support
