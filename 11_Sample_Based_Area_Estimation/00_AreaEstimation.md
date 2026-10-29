@@ -4,6 +4,8 @@ title: "11. Sample-Based Area Estimation"
 permalink: /11_AreaEstimation
 has_children: True
 nav_order: 12
+nav_exclude: true
+published: false
 ---
 
 # What is Sample-Based Area Estimation?
