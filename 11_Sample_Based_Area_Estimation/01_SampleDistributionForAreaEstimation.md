@@ -4,6 +4,8 @@ title:  "Sampling Design for Area Estimation"
 parent: "11. Sample-Based Area Estimation"
 permalink: /AREA2samplingAreaEstimation
 nav_order: 2
+nav_exclude: true
+published: false
 ---
 
 
