@@ -4,6 +4,8 @@ title:  "Response Design for Area Estimation"
 parent: "11. Sample-Based Area Estimation"
 permalink: /ResponseDesignAreaEstimation
 nav_order: 3
+nav_exclude: true
+published: false
 ---
 
 # Response Design
