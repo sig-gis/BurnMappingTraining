@@ -43,6 +43,11 @@ You'll be prompted to complete the following steps. If you already have a projec
 
 <img align="center" src="images/setup/GEE_cloud_project_setup1.png" vspace="10" width="600">
 
+## Add the Workshop Code Repository
+Use the link below to add the workshop GEE code repository to your GEE account. The repository will appear under the 'Reader' section of your 'Scripts' tab. It is called: **users/ee-scripts/PC642-SERVIR-BPEmbeddings**.
+
+Click this link: [https://code.earthengine.google.com/?accept_repo=users/ee-scripts/burn_mapping_training](https://code.earthengine.google.com/?accept_repo=users/ee-scripts/burn_mapping_training)
+
 
 
 
