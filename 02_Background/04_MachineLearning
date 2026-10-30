@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "2. Introduction to Machine Learning (Random Forest)"
-parent: 
+title: "2. Intro to Machine Learning (Random Forest)"
+parent: "2. Introductory Background Materials"
 permalink: /02_Intro_MachineLearning
 nav_order: 5
 ---
