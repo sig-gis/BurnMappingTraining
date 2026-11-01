@@ -7,8 +7,6 @@ nav_order: 3
 
 # Optical Imagery Burn Scar & Fire Severity Mapping
 
----
-
 ## 1. Purpose of This Script
 
 ### High-Level Objective
