@@ -73,6 +73,14 @@ Using Google's 10m Dynamic World land cover composite, detections are filtered b
 * **Noise & Small Fire Filtering:** Small, isolated detections below a user-defined area threshold (`minArea`) are filtered out.
 * **Rationale:** Very small polygon fragments are more likely to represent spatial noise, misclassifications, or minor agricultural burns outside the scope of interest. Users can adjust this threshold (e.g., 5,000 m² / 0.5 hectares) to match their mapping objectives.
 
+### Step 8: Export Selection
+In the 'EXPORTS SECTION' near the end of the script, some export types are commented on or off by default. They are exported by tile.
+You can choose which exports you would like and comment out the rest.
+  - burn scar image (dNBR derived and filtered burn polygons in image format)
+  - burn scar feature collection (dNBR derived and filtered burn polygons as vector data)
+  - dNBR image (2 bands: dNBRclass (Categorical Burn Severity) & dNBR (Continuous Delta NBR Value))
+
+
 ---
 
 ## 3. How to Use This Script
@@ -80,7 +88,7 @@ Using Google's 10m Dynamic World land cover composite, detections are filtered b
 ### Open the Script
 Find the **users/ee-scripts/PC642-SERVIR-BPEmbeddings/part1/burnScar_optical** script.
 
-You can also use the quick link: [https://code.earthengine.google.com/3b36286b4abbbf63af951d24e8e92bd3](https://code.earthengine.google.com/cbd4c2f7bdf8ff6ea8ad41be5aee261d). 
+You can also use the quick link: [https://code.earthengine.google.com/6f73b793b3b42270a5ac0c735b4f01c7](https://code.earthengine.google.com/6f73b793b3b42270a5ac0c735b4f01c7)
 
 If you make any changes to the script which you would like to save and easily access again, you can use `Save` (Save As) to save a version of the script to your own repository.
 
