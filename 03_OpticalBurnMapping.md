@@ -80,7 +80,7 @@ Using Google's 10m Dynamic World land cover composite, detections are filtered b
 ### Open the Script
 Find the **users/ee-scripts/PC642-SERVIR-BPEmbeddings/part1/burnScar_optical** script.
 
-You can also use the quick link: [https://code.earthengine.google.com/29baed42e7a78813a3af034f1f3a8ed5](https://code.earthengine.google.com/3b36286b4abbbf63af951d24e8e92bd3). 
+You can also use the quick link: [https://code.earthengine.google.com/3b36286b4abbbf63af951d24e8e92bd3](https://code.earthengine.google.com/cbd4c2f7bdf8ff6ea8ad41be5aee261d). 
 
 If you make any changes to the script which you would like to save and easily access again, you can use `Save` (Save As) to save a version of the script to your own repository.
 
