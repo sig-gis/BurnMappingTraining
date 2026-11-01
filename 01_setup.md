@@ -49,7 +49,8 @@ Use the link below to add the workshop GEE code repository to your GEE account. 
 Click this link: [https://code.earthengine.google.com/?accept_repo=users/ee-scripts/burn_mapping_training](https://code.earthengine.google.com/?accept_repo=users/ee-scripts/burn_mapping_training)
 
 
-
+## Planet NICFI Setup (Optional)
+Sentinel-2 is used in these scripts since monthly Planet NICFI imagery is no longer freely available. However, you can still access Planet NICFI Basemaps in GEE if you create a Planet account and link it to GEE. Directions for that process are in these [slides](https://docs.google.com/presentation/d/1FNkPapGw1R_ya6laPOOKXKhIfhuynSbuZHmLxhJTHsQ/edit?usp=sharing). Since these are composite basemaps they are not helpful for mapping burns of a particular time period, but can be nice for high resolution backgrounds, if you choose to add this to the GEE scripts yourself. This is not included in the current scripts of this training.
 
 
 
