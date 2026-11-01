@@ -5,31 +5,94 @@ permalink: /03_BurnMapping_Optical
 nav_order: 3
 ---
 
-## Open the Script
-Find the **users/ee-scripts/PC642-SERVIR-BPEmbeddings/part1/burnScar_optical** script.
+# Optical Imagery Burn Scar & Fire Severity Mapping
 
-You can also use the quick link: https://code.earthengine.google.com/29baed42e7a78813a3af034f1f3a8ed5. 
-
-If you make any changes to the script which you would like to save and easily access again, you can use `Save` (Save As) to save a version of the script to your own repository.
+---
 
 ## 1. Purpose of This Script
 
 ### High-Level Objective
-This script provides an automated, end-to-end Earth Observation workflow in Google Earth Engine (GEE) to rapidly identify burned areas and quantify fire severity across custom geographic regions. By leveraging multi-temporal optical imagery from Sentinel-2 and high-resolution land cover data from Google's Dynamic World model, the script isolates genuine fire impacts while filtering out atmospheric contamination, non-vegetated surfaces, and minor spatial noise.
+This script provides an automated Earth Observation workflow in Google Earth Engine (GEE) to rapidly map burned areas and assess fire severity across custom geographic regions using **optical satellite imagery**. By leveraging passive multispectral sensors (Sentinel-2) alongside Dynamic World land cover data, the script isolates real fire impacts while filtering out cloud cover, non-burnable terrain, and small spatial noise.
+
+*Note: This module represents the **Optical Imagery** approach to burn scar mapping. Optical sensors rely on visible (Red, Green, Blue), Near-Infrared (NIR), and Shortwave Infrared (SWIR) light to measure canopy greenness, moisture loss, and charcoal deposition.*
 
 ### What Is Included in the Script
-* **Flexible Area of Interest (AOI) Selection**: Choose between administrative boundaries from the FAO GAUL dataset (at country or province/state levels) or define custom boundaries using GEE hand-drawn map geometry.
-* **Automated Tiling Grid**: Automatically divides large study areas into customizable square spatial grid cells to optimize memory usage, prevent compute timeouts, and enable tiled exporting.
-* **Pre- and Post-Fire Compositing**: Automatically filters Sentinel-2 Level-2A imagery across baseline pre-fire and post-fire time windows, combining standard `QA60` bitmasking with Google Cloud Score+ (`CS+`) machine learning quality scores to eliminate cloud and shadow artifacts.
-* **Spectral Difference Analysis (dNBR & dBAI)**: Computes pre- and post-fire Normalized Burn Ratio (NBR) and Burned Area Index (BAI) rasters, producing Delta NBR (dNBR) for standardized severity classification and Delta BAI (dBAI) for fine-scale charcoal/ash deposition mapping.
-* **Dynamic World Land Cover Masking**: Integrates near-real-time Dynamic World land cover composites to mask out water bodies, urban/built land, bare soil, and snow/ice, isolating burn scar detection to relevant vegetation types.
-* **Post-Processing & Minimum Area Filtering**: Converts classified burn rasters into vector polygons, calculates polygon surface areas, and removes small isolated noise fragments below a user-defined square-meter threshold.
-* **Interactive Map Visualization & Side-by-Side Legends**: Renders multi-layer map displays with custom color palettes alongside dedicated, auto-stacked map UI panels for USGS Burn Severity and Dynamic World Land Cover.
-* **Batch Data Exporting**: Generates ready-to-run Google Earth Engine export tasks for both raster GeoTIFF files and vector shapefiles (`.shp`) directed to Google Drive or Earth Engine Assets.
+* **Flexible Area of Interest (AOI) Selection**: Define study boundaries using FAO GAUL administrative units (Country or Province/State level) or a hand-drawn map polygon.
+* **Automated Tiling Grid**: Splits large study areas into customizable spatial grid tiles to optimize processing speed and enable batch exports.
+* **Pre- and Post-Fire Optical Compositing**: Filters Sentinel-2 optical scenes across customizable pre- and post-fire baseline windows and applies cloud masking.
+* **Spectral Index Change Analysis**: Calculates Normalized Burn Ratio (NBR) and Burned Area Index (BAI) to derive Delta NBR (dNBR) for severity classification and Delta BAI (dBAI) for relative charcoal/ash detection.
+* **Dynamic World Land Cover Masking**: Integrates Dynamic World land cover data to filter out non-burnable land covers (water, built land, bare ground, snow/ice).
+* **Minimum Fire Size Filtering**: Converts burn scar rasters into vector polygons and filters out small, isolated detections below a user-defined minimum spatial area.
+* **Interactive Visualization & Side-by-Side Legends**: Displays multi-layer maps alongside dedicated UI panels for USGS Burn Severity and Dynamic World Land Cover.
+* **Data Exporting**: Exports refined raster GeoTIFFs and vector shapefiles (`.shp`) directly to Google Drive.
 
 ---
 
-## 2. How to Use This Script
+## 2. General Analysis Overview
+
+The burn mapping workflow follows a sequential optical remote sensing methodology to transform raw satellite observations into refined burn scar vectors and severity maps.
+
+```mermaid
+graph TD
+    A[Define Pre & Post Date Windows] --> B[Generate Optical Composites & Apply Cloud Masking]
+    B --> C[Calculate NBR & BAI Spectral Indices]
+    C --> D[Compute dNBR & dBAI Difference Maps]
+    D --> E[Classify Severity & Create Burn Polygons]
+    E --> F[Apply Land Cover Filter]
+    F --> G[Filter Out Small Noise / Minor Fires]
+    G --> H[Final Burn Scar Vectors & Rasters]
+```
+
+### Step 1: Baseline Time Windows
+* **Pre-Fire Window:** Set relative to the fire start date using a customizable time window parameter (recommended default: **30 days**).
+* **Post-Fire Window:** Set relative to the fire end date using the same customizable window duration (recommended default: **30 days**).
+* **Purpose:** Combining multiple weeks of satellite overpasses ensures sufficient clear observations to construct representative pre- and post-fire baseline snapshots while minimizing seasonal vegetation changes.
+
+### Step 2: Optical Image Compositing & Cloud Masking
+* **Spectral Bands Used:** Sentinel-2 optical imagery utilizing the **Red, Green, Blue (RGB), Near-Infrared (NIR), and Shortwave Infrared (SWIR)** bands.
+* **Cloud Masking:** Cloud masking is applied across all scenes to remove cloud contamination, cirrus haze, and cloud shadows (users can choose and adjust their preferred masking methods in the code).
+* **Median Compositing:** Earth Engine calculates the median reflectance value for each pixel across all cloud-free scenes in each window, producing clean **Pre-Fire** and **Post-Fire** baseline composites.
+
+### Step 3: Spectral Index Calculations (NBR & BAI)
+For both pre-fire and post-fire composites, two complementary spectral indices are calculated:
+* **Normalized Burn Ratio (NBR):** Calculated using the **NIR and SWIR2** bands ($\text{NBR} = \frac{\text{NIR} - \text{SWIR2}}{\text{NIR} + \text{SWIR2}}$). NBR measures canopy moisture loss and vegetation destruction.
+* **Burned Area Index (BAI):** Calculated using the **Red and NIR** bands ($\text{BAI} = \frac{1}{(0.1 - \text{Red})^2 + (0.06 - \text{NIR})^2}$). BAI highlights charcoal and dark ash accumulation on the ground.
+
+### Step 4: Measuring Spectral Change (dNBR & dBAI)
+* **Delta NBR ($\text{dNBR}$):** Calculated as $\text{preFireNBR} - \text{postFireNBR}$. Higher positive values represent greater vegetation destruction and fire severity.
+* **Delta BAI ($\text{dBAI}$):** Calculated as $\text{preFireBAI} - \text{postFireBAI}$. Measures relative change in charcoal and dark ash surface deposits.
+
+### Step 5: Extracting Burned Area Polygons from Severity Thresholds
+* **USGS Severity Classification:** Continuous dNBR values are stratified into standard USGS burn severity categories:
+  * *Enhanced Regrowth, High* ($\text{dNBR} \le -0.250$)
+  * *Enhanced Regrowth, Low* ($-0.250 < \text{dNBR} \le -0.100$)
+  * *Unburned* ($-0.100 < \text{dNBR} \le 0.100$)
+  * *Low Severity* ($0.100 < \text{dNBR} \le 0.270$)
+  * *Moderate-Low Severity* ($0.270 < \text{dNBR} \le 0.440$)
+  * *Moderate-High Severity* ($0.440 < \text{dNBR} \le 0.660$)
+  * *High Severity* ($\text{dNBR} > 0.660$)
+* **Burn Polygon Generation:** Initial burn area polygons are created from pixels reaching the **Moderate-Low Severity threshold and above** ($\text{dNBR} \ge 0.270$). This captures moderate to severe fire impacts while excluding unburned terrain and background variation.
+
+### Step 6: Land Cover Masking
+Using Google's 10m Dynamic World land cover composite, detections are filtered based on land surface type:
+* **Available Classes:** Water (Class 0), Trees (Class 1), Grass (Class 2), Flooded Vegetation (Class 3), Crops (Class 4), Shrub & Scrub (Class 5), Built (Class 6), Bare (Class 7), and Snow & Ice (Class 8).
+* **Default Class Exclusions:** By default, **Water, Built, Bare, and Snow & Ice** are excluded. Detections over these surfaces are often false positives (e.g., shadow artifacts, dark asphalt, or water absorption) and are generally not of interest for vegetation fire mapping.
+* **User Customization:** Users can toggle any combination of land cover classes to include or exclude based on their specific research or management focus.
+
+### Step 7: Minimum Size Filtering
+* **Noise & Small Fire Filtering:** Small, isolated detections below a user-defined area threshold (`minArea`) are filtered out.
+* **Rationale:** Very small polygon fragments are more likely to represent spatial noise, misclassifications, or minor agricultural burns outside the scope of interest. Users can adjust this threshold (e.g., 5,000 m² / 0.5 hectares) to match their mapping objectives.
+
+---
+
+## 3. How to Use This Script
+
+### Open the Script
+Find the **users/ee-scripts/PC642-SERVIR-BPEmbeddings/part1/burnScar_optical** script.
+
+You can also use the quick link: [https://code.earthengine.google.com/29baed42e7a78813a3af034f1f3a8ed5](https://code.earthengine.google.com/3b36286b4abbbf63af951d24e8e92bd3). 
+
+If you make any changes to the script which you would like to save and easily access again, you can use `Save` (Save As) to save a version of the script to your own repository.
 
 Executing the script involves three simple steps: configuring your input parameters at the top of the code, running the script to inspect the interactive map layers, and initiating your exports from the Earth Engine Tasks panel.
 
