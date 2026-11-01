@@ -31,17 +31,9 @@ This script provides an automated Earth Observation workflow in Google Earth Eng
 ## 2. General Analysis Overview
 
 The burn mapping workflow follows a sequential optical remote sensing methodology to transform raw satellite observations into refined burn scar vectors and severity maps.
-
-```mermaid
-graph TD
-    A[Define Pre & Post Date Windows] --> B[Generate Optical Composites & Apply Cloud Masking]
-    B --> C[Calculate NBR & BAI Spectral Indices]
-    C --> D[Compute dNBR & dBAI Difference Maps]
-    D --> E[Classify Severity & Create Burn Polygons]
-    E --> F[Apply Land Cover Filter]
-    F --> G[Filter Out Small Noise / Minor Fires]
-    G --> H[Final Burn Scar Vectors & Rasters]
-```
+<p align="center">
+  <img src="{{ site.baseurl }}/images/optical_burn/optical_burn_mapping_workflow_v2.png"  vspace="10" width="300">
+</p>
 
 ### Step 1: Baseline Time Windows
 * **Pre-Fire Window:** Set relative to the fire start date using a customizable time window parameter (recommended default: **30 days**).
