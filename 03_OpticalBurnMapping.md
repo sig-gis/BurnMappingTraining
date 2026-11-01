@@ -55,14 +55,12 @@ For both pre-fire and post-fire composites, two complementary spectral indices a
 * **Delta BAI ($\text{dBAI}$):** Calculated as $\text{preFireBAI} - \text{postFireBAI}$. Measures relative change in charcoal and dark ash surface deposits.
 
 ### Step 5: Extracting Burned Area Polygons from Severity Thresholds
-* **USGS Severity Classification:** Continuous dNBR values are stratified into standard USGS burn severity categories:
-  * *Enhanced Regrowth, High* ($\text{dNBR} \le -0.250$)
-  * *Enhanced Regrowth, Low* ($-0.250 < \text{dNBR} \le -0.100$)
-  * *Unburned* ($-0.100 < \text{dNBR} \le 0.100$)
-  * *Low Severity* ($0.100 < \text{dNBR} \le 0.270$)
-  * *Moderate-Low Severity* ($0.270 < \text{dNBR} \le 0.440$)
-  * *Moderate-High Severity* ($0.440 < \text{dNBR} \le 0.660$)
-  * *High Severity* ($\text{dNBR} > 0.660$)
+* **USGS Severity Classification:** Continuous dNBR values are stratified into standard USGS burn severity categories
+<p align="center">
+  <img src="{{ site.baseurl }}/images/optical_burn/USGS_BurnSeverity_Thresholds.png"  vspace="10" width="700">
+</p>
+[Image Source](https://un-spider.org/advisory-support/recommended-practices/recommended-practice-burn-severity/in-detail/normalized-burn-ratio)
+
 * **Burn Polygon Generation:** Initial burn area polygons are created from pixels reaching the **Moderate-Low Severity threshold and above** ($\text{dNBR} \ge 0.270$). This captures moderate to severe fire impacts while excluding unburned terrain and background variation.
 
 ### Step 6: Land Cover Masking
