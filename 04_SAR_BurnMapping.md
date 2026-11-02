@@ -41,18 +41,7 @@ Because radar signals interact with physical land surface properties—such as c
 
 The SAR burn mapping workflow follows a sequential microwave remote sensing methodology to transform raw active radar backscatter observations into refined burn scar vectors and raster datasets.
 
-![SAR Burn Scar Analysis Workflow](sar_burn_mapping_workflow.png)
 
-```mermaid
-graph TD
-    A["1. Baseline Time Windows<br/>(Pre- & Post-Fire 30-Day Windows)"] --> B["2. Sentinel-1 SAR Filtering & Preprocessing<br/>(C-Band GRD, IW Mode, Descending Orbit, dB to Linear, Focal Mean)"]
-    B --> C["3. Calculate 10 SAR Change Indices<br/>(Dual-Pol VV & VH: RBD, RBDrel1, RBDrel2, RBR, dRVI, dDPSVI)"]
-    C --> D["4. Dynamic 10th Percentile Thresholding<br/>(Isolate Top 10% Backscatter Drops Across AOI)"]
-    D --> E["5. Multi-Index Voting Consensus<br/>(Overlay 10 Binary Layers & Extract Pixels with ≥ 5 Agreeing Indices)"]
-    E --> F["6. Dynamic World Land Cover Masking<br/>(Exclude Non-Burnable Surfaces: Water, Built, Bare, Snow/Ice)"]
-    F --> G["7. Vectorization & Minimum Area Size Filtering<br/>(Convert to Polygons & Filter Small Speckle Fragments < minArea)"]
-    G --> H["8. Export Final Burn Scar Outputs<br/>(Vector Shapefiles & Multi-Band Raster GeoTIFFs to Drive)"]
-```
 
 ---
 
