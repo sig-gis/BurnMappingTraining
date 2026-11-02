@@ -150,17 +150,6 @@ var includeBare       = false; // Class 7 : Bare (Excluded by default)
 var includeSnowIce    = false; // Class 8 : Snow & Ice (Excluded by default)
 ```
 
-#### 4. Minimum Burn Scar Area Filter
-Define the smallest burn scar polygon size to retain:
-```javascript
-var minArea = 5000; // Minimum area threshold in square meters (5,000 m² = 0.5 hectares)
-```
-
-#### 5. Export Grid Scale
-Set the tile size for dividing large study areas:
-```javascript
-var gridScale = 140000; // Grid cell side-length in meters (140,000 m = 140 km)
-```
 
 ---
 
