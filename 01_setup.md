@@ -50,7 +50,7 @@ Click this link: [https://code.earthengine.google.com/?accept_repo=users/ee-scri
 
 
 ## Planet NICFI Setup (To Use Basemaps)
-Planet NICFI montly imagery is no longer freely available, however, you can still access Planet NICFI Basemaps in GEE if you create a Planet account and link it to GEE. Directions for that process are in these [slides](https://docs.google.com/presentation/d/1FNkPapGw1R_ya6laPOOKXKhIfhuynSbuZHmLxhJTHsQ/edit?usp=sharing). 
+Planet NICFI monthly imagery is no longer freely available, however, you can still access Planet NICFI Basemaps in GEE if you create a Planet account and link it to GEE. Directions for that process are in these [slides](https://docs.google.com/presentation/d/1FNkPapGw1R_ya6laPOOKXKhIfhuynSbuZHmLxhJTHsQ/edit?usp=sharing). 
 
 
 
