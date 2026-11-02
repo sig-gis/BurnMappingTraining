@@ -2,7 +2,7 @@
 layout: page
 title: "5. Conclusions"
 permalink: /05_BurnMapping_Conclusions
-nav_order: 6
+nav_order: 5
 ---
 
 # Conclusions & Key Takeaways
