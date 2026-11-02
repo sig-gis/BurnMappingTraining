@@ -121,6 +121,8 @@ JS has a simple syntax and can be divided into functions. Main JS reserved words
 - *map*: to apply a function to all images in an image collection
 - *clip*: to cut a raster or vector layer by a geometry or polygon
 
+### Complete code
+Finished version of the codes in this training are in the workshop code repository in the GEE_intro folder. (users/ee-scripts/burn_mapping_training/GEE_intro/)
 
 ## Exercise: my first script
 
@@ -168,20 +170,14 @@ Once the script is saved, it will appear in the script manager panel (under `Own
 
 Congratulations! You have created your first script.
 
-# Repository
-All the codes created in this workshop are available in this repository: <a href="https://code.earthengine.google.com/?accept_repo=users/ee-scripts/Liberia_Forest_SIG_workshops" target="_blank" rel="noopener noreferrer">https://code.earthengine.google.com/?accept_repo=users/ee-scripts/Liberia_Forest_SIG_workshops</a>.
-
-Once you click this link it will be added to your account under the *Reader* repositories in the `Scripts` panel.
 
 
 
-
-
-## Javascript and Earth Engine Concepts
+# Javascript and Earth Engine Concepts
 
 This section covers JavaScript (JS) syntax and basic data structures in Earth Engine.
 
-When you learn to program on Earth Engine, you don't need to learn JavaScript or Python in depth, they are just ways to access the Earth Engine API.
+When you learn to program on Earth Engine, you don't need to learn JavaScript or Python in depth, they are just ways to access the Earth Engine API. You can follow the code blocks below, copying them one by one, but a complete script is available in the repository as `3_Earth_Engine_API` in the `GEE_intro` folder.
 
 ### Variables
 
@@ -286,7 +282,7 @@ A comment can be added by selecting multiple lines and using a shortcut (`Ctrl +
 
 ### Complete code
 
-"`2 Introduction to JS`" script from the repository and the `07_intro_to_GEE/01_intro` folder.
+"`2_Introduction_to_JS`" script from the repository and the `GEE_intro` folder.
 
 ## Earth Engine API Basics
 
@@ -475,7 +471,3 @@ function triplicate(number) {
 ### Challenge 7
 
 Calculate the sum of all Numbers in `newList`. Save and print that value as `sum`.
-
-### Complete code
-
-"`3 Earth Engine API`" script from the repository and the `07_intro_to_GEE/01_intro` folder or direct link: <a href="https://code.earthengine.google.com/d31b78d60bedfc9cf33ee819359da267" target="_blank" rel="noopener noreferrer">https://code.earthengine.google.com/d31b78d60bedfc9cf33ee819359da267</a>
