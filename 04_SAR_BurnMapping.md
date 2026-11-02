@@ -73,7 +73,7 @@ Just as optical mapping uses indices like the Normalized Burn Ratio (NBR) to com
 #### Detailed Breakdown of the 10 SAR Change Indices
 
 <p align="center">
-  <img src="{{ site.baseurl }}/images/sar_burn/sar_indices_table.png.png"  vspace="10" width="700">
+  <img src="{{ site.baseurl }}/images/sar_burn/sar_indices_table.png"  vspace="10" width="700">
 </p>
 
 
