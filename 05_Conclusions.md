@@ -27,4 +27,4 @@ By bridging satellite remote sensing theory with Google Earth Engine (GEE) workf
 * **10-Index Radar Ensemble & Consensus Voting**: Calculates 10 complementary radar change metrics ($	ext{RBD}$, $	ext{RBDrel1}$, $	ext{RBDrel2}$, $	ext{RBR}$, $	ext{dRVI}$, $	ext{dDPSVI}$) and extracts burn scars only where at least 5 indices agree (greater than or equal to 5 votes), suppressing single-index speckle noise and soil moisture false positives.
 
 ## Next Steps
-Two core methods for burn mapping are presented. Now that you have tested both, explore your results to see which option performs best in your area of interest!
+Two core methods for burn mapping are presented. Now that you have tested both, explore your results to see which option performs best in your area of interest! Maps of burned areas can be used for multiple purposes, such as: disaster resource allocation decision making, historical assessments of fire damage extent and severity, or as a map for sampling stratification for sample-based area estimation of burned areas. How might you use these results in your region?
