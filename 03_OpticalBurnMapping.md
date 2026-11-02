@@ -86,8 +86,7 @@ You can choose which exports you would like and comment out the rest.
 ### Open the Script
 Find the **users/ee-scripts/PC642-SERVIR-BPEmbeddings/part1/burnScar_optical** script.
 
-You can also use the quick link: [https://code.earthengine.google.com/6f73b793b3b42270a5ac0c735b4f01c7](https://code.earthengine.google.com/6f73b793b3b42270a5ac0c735b4f01c7)
-
+You can also use the quick link: [https://code.earthengine.google.com/98bdf01f7df1125f78d68599d962a582](https://code.earthengine.google.com/98bdf01f7df1125f78d68599d962a582).
 If you make any changes to the script which you would like to save and easily access again, you can use `Save` (Save As) to save a version of the script to your own repository.
 
 Executing the script involves three simple steps: configuring your input parameters at the top of the code, running the script to inspect the interactive map layers, and initiating your exports from the Earth Engine Tasks panel.
