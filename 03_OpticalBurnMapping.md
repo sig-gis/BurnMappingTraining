@@ -7,6 +7,10 @@ nav_order: 3
 
 # Optical Imagery Burn Scar & Fire Severity Mapping
 
+<p align="center">
+  <img src="{{ site.baseurl }}/images/optical_burn/Optical_Burn_ExampleResult.png"  vspace="10" width="700">
+</p>
+
 ## 1. Purpose of This Script
 
 ### High-Level Objective
