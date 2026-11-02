@@ -17,7 +17,7 @@ Unlike optical sensors that depend on visible sunlight and cloud-free skies, SAR
 Because radar signals interact with physical land surface properties—such as canopy volume, branch geometry, surface roughness, and soil dielectric moisture—this script employs a **multi-index consensus voting model**. Rather than relying on a single index (like dNBR in optical mapping), the script calculates **10 distinct SAR change indices** across dual polarizations (VV and VH) and extracts burn scars only where **at least 5 indices agree**, drastically reducing false alarms and radar speckle noise.
 
 * **Script Path:** `users/ee-scripts/PC642-SERVIR-BPEmbeddings/part1/burnScar_SAR`
-* **Quick Link to GEE Script:** [Open Google Earth Engine Code Editor](https://code.earthengine.google.com/a118a23701afb37f840d135973526eec)
+* **Quick Link to GEE Script:** [https://code.earthengine.google.com/71821f8a9f874fde2941abc05b6de52f](https://code.earthengine.google.com/71821f8a9f874fde2941abc05b6de52f)
 
 *Note: This module represents the **SAR (Radar) Imagery** approach to burn scar mapping. Radar microwave signals measure physical canopy volume and structural destruction rather than optical leaf reflectance.*
 
