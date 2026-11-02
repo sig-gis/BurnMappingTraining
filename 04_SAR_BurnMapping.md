@@ -40,8 +40,9 @@ Because radar signals interact with physical land surface properties—such as c
 ## 2. General Analysis Overview
 
 The SAR burn mapping workflow follows a sequential microwave remote sensing methodology to transform raw active radar backscatter observations into refined burn scar vectors and raster datasets.
-
-sar_burn_mapping_workflow_short.png
+<p align="center">
+  <img src="{{ site.baseurl }}/images/sar_burn/sar_burn_mapping_workflow_short.png.png"  vspace="10" width="300">
+</p>
 
 ---
 
