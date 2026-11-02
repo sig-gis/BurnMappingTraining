@@ -72,18 +72,9 @@ Just as optical mapping uses indices like the Normalized Burn Ratio (NBR) to com
 
 #### Detailed Breakdown of the 10 SAR Change Indices
 
-| # | Index Name | Polarization | Formula | Remote Sensing Meaning & Description |
-| :-: | :--- | :-: | :--- | :--- |
-| **1** | `VH_RBD` | VH | $\text{Post}_{VH} - \text{Pre}_{VH}$ | **Radar Burn Difference (VH)**: Absolute raw backscatter power change. Captures loss of canopy volume scattering. |
-| **2** | `VH_RBDrel1` | VH | $((\text{Pre}_{VH} - \text{Post}_{VH}) / \text{Pre}_{VH}) \times (-1)$ | **Relative Radar Burn Difference 1 (VH)**: Fractional backscatter change relative to pre-fire baseline. |
-| **3** | `VH_RBDrel2` | VH | $((\text{Pre}_{VH} - \text{Post}_{VH}) / \sqrt{\text{Pre}_{VH}}) \times (-1)$ | **Relative Radar Burn Difference 2 (VH)**: Variance-scaled change dampening noise in low-return areas. |
-| **4** | `VH_RBR` | VH | $\text{Post}_{VH} / \text{Pre}_{VH}$ | **Radar Burn Ratio (VH)**: Simple post-to-pre backscatter ratio. |
-| **5** | `VV_RBD` | VV | $\text{Post}_{VV} - \text{Pre}_{VV}$ | **Radar Burn Difference (VV)**: Absolute change in vertical co-polarization. Captures surface roughness and moisture drop. |
-| **6** | `VV_RBDrel1` | VV | $((\text{Pre}_{VV} - \text{Post}_{VV}) / \text{Pre}_{VV}) \times (-1)$ | **Relative Radar Burn Difference 1 (VV)**: Fractional change in vertical co-polarization backscatter. |
-| **7** | `VV_RBDrel2` | VV | $((\text{Pre}_{VV} - \text{Post}_{VV}) / \sqrt{\text{Pre}_{VV}}) \times (-1)$ | **Relative Radar Burn Difference 2 (VV)**: Variance-scaled vertical co-polarization change. |
-| **8** | `VV_RBR` | VV | $\text{Post}_{VV} / \text{Pre}_{VV}$ | **Radar Burn Ratio (VV)**: Simple post-to-pre ratio of vertical backscatter intensity. |
-| **9** | `dRVI` | VV & VH | $\text{RVI}_{\text{Post}} - \text{RVI}_{\text{Pre}}$<br>*[where $\text{RVI} = \frac{4 \cdot VH}{VV + VH}$]* | **Delta Radar Vegetation Index**: RVI estimates canopy volume scattering relative to total power. Negative $\text{dRVI}$ tracks canopy collapse. |
-| **10** | `dDPSVI` | VV & VH | $\text{DPSVI}_{\text{Post}} - \text{DPSVI}_{\text{Pre}}$<br>*[where $\text{DPSVI} = \frac{VV + VH}{VV}$]* | **Delta Dual-Pol SAR Vegetation Index**: Tracks shifts in total backscatter power relative to vertical co-polarization. |
+<p align="center">
+  <img src="{{ site.baseurl }}/images/sar_burn/sar_indices_table.png.png"  vspace="10" width="700">
+</p>
 
 
 #### Notes on How Indices are Applied in the Script
