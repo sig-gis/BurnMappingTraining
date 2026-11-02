@@ -30,3 +30,6 @@ Because radar backscatter is sensitive to multiple landscape variables—such as
   * Delta Dual-Polarization SAR Vegetation Index (`dDPSVI`)
 * **Multi-Index Consensus Thresholding**: Computes dynamic percentile cutoffs (e.g., 10th percentile) across the study region for each index and constructs an agreement map requiring **5 or more agreeing indices** ($\ge 5$) to isolate burn scars.
 * **High-Resolution Optical Validation**: Overlays SAR burn scar detections onto high-resolution PlanetScope optical basemaps within the interactive Earth Engine map interface for visual inspection and verification.
+
+
+You can also open a copy of the code using this quick link: [https://code.earthengine.google.com/a118a23701afb37f840d135973526eec](https://code.earthengine.google.com/a118a23701afb37f840d135973526eec)
