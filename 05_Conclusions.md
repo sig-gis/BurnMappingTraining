@@ -24,7 +24,7 @@ By bridging satellite remote sensing theory with Google Earth Engine (GEE) workf
 
 ### 3. Synthetic Aperture Radar (SAR) for Cloud-Tolerant Burn Mapping
 * **All-Weather & Cloud/Smoke Penetration**: Ingests Sentinel-1 C-band active microwave radar (VV and VH polarizations) that penetrates dense cloud cover, haze, and fire smoke, providing essential mapping capability in tropical and monsoonal biomes.
-* **10-Index Radar Ensemble & Consensus Voting**: Calculates 10 complementary radar change metrics (RBD, RBDrel1, RBDrel2, RBR, dRVI, dDPSVI) and extracts burn scars only where at least 5 indices agree (greater than or equal to 5 votes), suppressing single-index speckle noise and soil moisture false positives.
+* **10-Index Radar Ensemble & Consensus Voting**: Calculates 10 complementary radar change metrics (RBD, RBDrel1, RBDrel2, RBR --- single polarization indices; and dRVI & dDPSVI --- dual polarization indices) and extracts burn scars only where at least 5 indices agree (greater than or equal to 5 votes), suppressing single-index speckle noise and soil moisture false positives.
 
 ## Next Steps
 Two core methods for burn mapping are presented. Now that you have tested both, explore your results to see which option performs best in your area of interest! Maps of burned areas can be used for multiple purposes, such as: disaster resource allocation decision making, historical assessments of fire damage extent and severity, or as a map for sampling stratification for sample-based area estimation of burned areas. How might you use these results in your region?
