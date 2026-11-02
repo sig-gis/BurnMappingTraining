@@ -17,7 +17,7 @@ Unlike optical sensors that depend on visible sunlight and cloud-free skies, SAR
 Because radar signals interact with physical land surface properties—such as canopy volume, branch geometry, surface roughness, and soil dielectric moisture—this script employs a **multi-index consensus voting model**. Rather than relying on a single index (like dNBR in optical mapping), the script calculates **10 distinct SAR change indices** across dual polarizations (VV and VH) and extracts burn scars only where **at least 5 indices agree**, drastically reducing false alarms and radar speckle noise.
 
 * **Script Path:** `users/ee-scripts/PC642-SERVIR-BPEmbeddings/part1/burnScar_SAR`
-* **Quick Link to GEE Script:** [https://code.earthengine.google.com/71821f8a9f874fde2941abc05b6de52f](https://code.earthengine.google.com/71821f8a9f874fde2941abc05b6de52f)
+* **Quick Link to GEE Script:** [https://code.earthengine.google.com/26d0ea96d0ffbf9be5e6ba2afc58396c](https://code.earthengine.google.com/26d0ea96d0ffbf9be5e6ba2afc58396c)
 
 *Note: This module represents the **SAR (Radar) Imagery** approach to burn scar mapping. Radar microwave signals measure physical canopy volume and structural destruction rather than optical leaf reflectance.*
 
@@ -102,6 +102,10 @@ Smooth flat surfaces (calm water bodies, paved highways, airport runways, and ba
 To solve this, the script overlays Google's 10m Dynamic World land cover model and **excludes non-vegetated classes** (Water, Built, Bare, Snow/Ice by default), restricting burn mapping strictly to burnable land cover types (Trees, Grass, Flooded Veg, Crops, Shrub).
 
 
+#### E. Minimum Area Size Filtering (`minArea`)
+Radar imagery contains inherent high-frequency speckle noise. The script converts classified burn rasters into vector polygons, calculates polygon surface areas ($\text{m}^2$), and removes small fragments below a user-defined threshold (e.g., $5,000\,\text{m}^2$ / 0.5 hectares).
+
+
 ---
 
 ## 3. How to Use This Script
@@ -132,7 +136,15 @@ In the script body under **AOI SELECTION**, uncomment **one** of the four AOI op
 * **Option 3**: Hand-drawn map polygon using GEE drawing tools (`geometry`).
 * **Option 4**: Path to an existing GEE FeatureCollection asset.
 
-#### 3. Dynamic World Land Cover Toggles
+#### 3. SAR Index Consensus Settings
+The defualt is to use the 10th percentile as the threshold to define burns versus no burn for each index. 
+You can choose to manually define hard coded thresholds by the using commented out lines provided in the code, but this approach can fail because baseline radar backscatter fluctuates with seasonal rainfall, soil moisture, and local vegetation types.
+```javascript
+var sarPercentileCutoff = 10;        // Dynamic percentile cutoff (isolates bottom 10% backscatter drop), recommended leave as default
+var minAgreeingIndices = 5;          // Minimum consensus vote threshold (5 out of 10 agreeing indices), recommended leave as default
+```
+
+#### 4. Dynamic World Land Cover Toggles
 Toggle land cover classes to include (`true`) or exclude/mask out (`false`):
 ```javascript
 var includeWater      = false; // Class 0 : Water (Excluded by default - prevents radar false positives)
@@ -145,6 +157,34 @@ var includeBuilt      = false; // Class 6 : Built (Excluded by default - prevent
 var includeBare       = false; // Class 7 : Bare (Excluded by default)
 var includeSnowIce    = false; // Class 8 : Snow & Ice (Excluded by default)
 ```
+
+#### 5. Cloud Masking Thresholds
+This is used for visualization only. The Sentinel-2 imagery is not used for analysis. Adjust the strictness of the Cloud Score+ quality filter:
+```javascript
+var csQualityThreshold = 0.60;  // Pixel quality threshold (0.50 to 0.65 recommended)
+var cloudPercentThreshold = 30; // Scene-wide cloud filter threshold (if Method 1 is enabled)
+```
+*Higher values (e.g., `0.65`) remove thin haze and cirrus shadows more aggressively, while lower values retain more pixels in persistently cloudy tropical regions.*
+
+#### 6. Minimum Burn Scar Area Filter
+Define the smallest burn scar polygon size to retain in the final output:
+```javascript
+var minArea = 5000; // Minimum area threshold in square meters (5,000 m² = 0.5 hectares)
+```
+*Polygons smaller than `minArea` are filtered out as spatial noise.*
+
+#### 7. Use of Planet NICFI Basemaps for Visualization (Optional)
+Code has been provided but commented out by default to generate pre and post fire imagery from Planet NICFI basemaps. If you have a Planet account and have linked it to your GEE account, you can uncomment this code. This imagery is not used for analysis, only a visual of before and after the fire, in the same way Sentinel-2 is being used. Uncomment the "Planet NICFI optical" section for this optional feature.
+
+#### 8. Export Asset Directory (Optional)
+If exporting directly to Earth Engine Assets rather than Google Drive, specify your GEE username directory:
+```javascript
+var user_asset_path_start = 'users/YOUR_USERNAME/';
+```
+
+#### 9. Adjust Final Exports (Optional)
+In the 'EXPORTS SECTION' near the end of the script, some export types are commented on or off by default. You can choose which exports you would like and comment out the rest.
+
 
 
 ---
@@ -168,3 +208,8 @@ Use the **Layers** control in the top-right corner to toggle map layers:
 * **Potential Burn Scar**: Highlights candidate burn areas where $\ge 5$ indices agree (in dark red).
 * **Dynamic World Land Cover**: Displays modal land cover classes alongside the **Dynamic World Legend** (bottom-right).
 * **Allowed Land Cover Mask**: Shows vegetated land cover types selected for analysis in green.
+
+### Downloading & Exporting Results
+Once parameter settings are confirmed, export your raster and vector results from the **Tasks** tab:
+1. Click the **Tasks** tab in the top-right panel of Earth Engine.
+2. Click **Run** next to the generated tasks
