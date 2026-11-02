@@ -79,25 +79,28 @@ Just as optical mapping uses indices like the Normalized Burn Ratio (NBR) to com
 
 #### Notes on How Indices are Applied in the Script
 
-##### Mathematical Orientation: The `-1` Multiplier
+##### A. Mathematical Orientation: The `-1` Multiplier
 In standard remote sensing equations, some ratios yield positive numbers for a post-fire drop. In this script, all relative change formulas (`RBDrel1` and `RBDrel2`) are intentionally multiplied by `-1`. Multiplying by `-1` forces **every single one of the 10 SAR indices to produce negative values for fire damage**. This creates a single uniform rule across the entire script: **pixels with the most negative change values represent burn candidates across all bands**.
 
-##### Statistical Justification for Dynamic 10th Percentile Thresholding
+
+##### B. Statistical Justification for Dynamic 10th Percentile Thresholding
 Rather than hardcoding a static cutoff (e.g., $-0.05$) that fails when seasonal soil moisture or baseline forest types change, the script calculates a **dynamic 10th percentile cutoff** across the study area using `reduceRegion`:
 
 $$	ext{percentile} = 	ext{indices.reduceRegion}(	ext{reducer} = 	ext{ee.Reducer.percentile}([10]))$$
 
 * **Statistical Logic**: Burned areas represent spatial anomalies covering a minority of the landscape. Taking the 10th percentile isolates the bottom 10% extreme drops in backscatter across the region.
 * **Region-Adaptive**: Automatically adjusts the cutoff threshold for each specific image pair and geographic region.
+  
 
-##### Multi-Index Voting Consensus (greater than or equal to 5 Agreeing Indices)
+##### C. Multi-Index Voting Consensus (greater than or equal to 5 Agreeing Indices)
 Because individual radar metrics can suffer from single-index noise or moisture fluctuations, the script overlays **10 distinct binary index layers**:
 
 $$	ext{burnAgreement} = \sum_{i=1}^{10} \mathbf{1}_{\{	ext{index}_i \le 	ext{percentile}_i\}}$$
 
 A pixel is classified as a **Potential Burn Scar** only when **at least 5 out of 10 indices agree** ($	ext{burnAgreement} \ge 5$). This voting consensus eliminates single-index false alarms without sacrificing detection sensitivity.
 
-##### Dynamic World Land Cover Masking
+
+##### D. Dynamic World Land Cover Masking
 Smooth flat surfaces (calm water bodies, paved highways, airport runways, and bare soil) reflect radar signals away from the sensor like a mirror (**specular reflection**). This produces very low backscatter returns that look identical to severe burn scars.
 
 To solve this, the script overlays Google's 10m Dynamic World land cover model and **excludes non-vegetated classes** (Water, Built, Bare, Snow/Ice by default), restricting burn mapping strictly to burnable land cover types (Trees, Grass, Flooded Veg, Crops, Shrub).
