@@ -33,7 +33,6 @@ Because radar signals interact with physical land surface properties—such as c
 * **Automated Spatial Tiling Grid**: Subdivides large study regions into spatial grid tiles to optimize memory usage, avoid compute timeouts, and enable batch exports.
 * **Discrete 10-Color Palette & 5-Milestone UI Legends**: Displays a 10-color discrete map layer alongside custom UI legend panels for SAR Index Agreement (1 to 10) and Dynamic World Land Cover.
 * **Optional Optical Baseline Comparison**: Includes background Sentinel-2 optical compositing with Cloud Score+ quality filtering for visual cross-validation.
-* **Batch Data Exporting**: Generates export tasks for refined raster GeoTIFF files and vector shapefiles (`.shp`) directed to Google Drive or GEE Assets.
 
 ---
 
@@ -62,50 +61,16 @@ Understanding when and why to use SAR imagery instead of optical imagery is key 
 
 ### Deep Dive: How SAR Burn Mapping & Indices Work
 
-#### 1. Physical Basis: Canopy Volume Scattering vs. Ground Backscatter
-At C-band wavelengths (~5.6 cm), radar signals interact strongly with forest leaf canopies, twigs, and branches through **volume scattering** (multiple reflections off structural elements returning power to the satellite). 
+#### Detailed Breakdown of the 10 SAR Change Indices
+
+When a wildfire burns through vegetation, it destroys leaves, twigs, and small branches. At C-band wavelengths (~5.6 cm, used by Sentinel-1), radar signals interact strongly with forest leaf canopies, twigs, and branches through **volume scattering** (multiple reflections off structural elements returning power to the satellite). Loss of dense canopy structure removes 'volume scattering', causing the radar signal to pass through or bounce away rather than returning to the satellite. As a result, post-fire radar backscatter is noticeably lower (darker) than pre-fire baseline backscatter.
 
 When a wildfire destroys the forest canopy:
 1. **Canopy Collapse**: Foliage and small branches burn away, destroying volume scattering.
 2. **Signal Loss**: The radar beam passes through the open canopy and reflects away off exposed ground surfaces, causing a sharp **drop in returned backscatter power** ($VV$ and $VH$).
 3. **Moisture Shifts**: Soil drying during fires further reduces the dielectric constant, decreasing returned signal intensity.
 
-#### 2. Mathematical Orientation: The `-1` Multiplier
-In standard remote sensing equations, some ratios (like $(Pre - Post) / Pre$) yield positive numbers for a post-fire drop. In this script, all relative change formulas (`RBDrel1` and `RBDrel2`) are intentionally multiplied by `-1`:
-
-$$	ext{RBDrel1} = \left(rac{	ext{PreFire} - 	ext{PostFire}}{	ext{PreFire}}
-ight) 	imes (-1)$$
-
-**Why this matters:** Multiplying by `-1` forces **every single one of the 10 SAR indices to produce negative values for fire damage**. This creates a single uniform rule across the entire script: **pixels with the most negative change values represent burn candidates across all bands**.
-
-#### 3. Statistical Justification for Dynamic 10th Percentile Thresholding
-Rather than hardcoding a static cutoff (e.g., $-0.05$) that fails when seasonal soil moisture or baseline forest types change, the script calculates a **dynamic 10th percentile cutoff** across the study area using `reduceRegion`:
-
-$$	ext{percentile} = 	ext{indices.reduceRegion}(	ext{reducer} = 	ext{ee.Reducer.percentile}([10]))$$
-
-* **Statistical Logic**: Burned areas represent spatial anomalies covering a minority of the landscape. Taking the 10th percentile isolates the bottom 10% extreme drops in backscatter across the region.
-* **Region-Adaptive**: Automatically adjusts the cutoff threshold for each specific image pair and geographic region.
-
-#### 4. Multi-Index Voting Consensus ($\ge 5$ Agreeing Indices)
-Because individual radar metrics can suffer from single-index noise or moisture fluctuations, the script overlays **10 distinct binary index layers**:
-
-$$	ext{burnAgreement} = \sum_{i=1}^{10} \mathbf{1}_{\{	ext{index}_i \le 	ext{percentile}_i\}}$$
-
-A pixel is classified as a **Potential Burn Scar** only when **at least 5 out of 10 indices agree** ($	ext{burnAgreement} \ge 5$). This voting consensus eliminates single-index false alarms without sacrificing detection sensitivity.
-
-#### 5. Dynamic World Land Cover Masking
-Smooth flat surfaces (calm water bodies, paved highways, airport runways, and bare soil) reflect radar signals away from the sensor like a mirror (**specular reflection**). This produces very low backscatter returns that look identical to severe burn scars.
-
-To solve this, the script overlays Google's 10m Dynamic World land cover model and **excludes non-vegetated classes** (Water, Built, Bare, Snow/Ice by default), restricting burn mapping strictly to burnable land cover types (Trees, Grass, Flooded Veg, Crops, Shrub).
-
-#### 6. Minimum Area Size Filtering (`minArea`)
-Radar imagery contains inherent high-frequency speckle noise. The script converts classified burn rasters into vector polygons, calculates polygon surface areas ($m^2$), and removes small fragments below a user-defined threshold (e.g., $5,000 \, m^2$ / 0.5 hectares).
-
----
-
-### Detailed Breakdown of the 10 SAR Change Indices
-
-The script computes 10 complementary change metrics across **VH** (cross-polarization, highly sensitive to canopy volume) and **VV** (co-polarization, sensitive to surface roughness and moisture):
+Just as optical mapping uses indices like the Normalized Burn Ratio (NBR) to combine specific light bands (NIR and SWIR) into a metric of vegetation health, SAR indices combine microwave backscatter polarizations ($VV$ and $VH$) across time to track physical canopy collapse and surface moisture loss.However, while optical mapping can rely on NBR as a single standardized metric, radar backscatter responds dynamically to tree geometry, ground slope, and moisture. Because no single radar index captures every type of terrain or forest structure perfectly, the script computes 10 complementary change metrics across VH (cross-polarization, highly sensitive to canopy volume) and VV (co-polarization, sensitive to surface roughness and moisture):
 
 | # | Index Name | Polarization | Mathematical Formula | Physical & Remote Sensing Interpretation |
 | :---: | :--- | :---: | :--- | :--- |
@@ -123,6 +88,32 @@ ight) 	imes (-1)$ | **Relative Radar Burn Difference 2 (VV)**: Variance-scaled v
 | **8** | `VV_RBR` | VV | $rac{	ext{Post}_{VV}}{	ext{Pre}_{VV}}$ | **Radar Burn Ratio (VV)**: Simple post-to-pre ratio of vertical backscatter intensity. |
 | **9** | `dRVI` | VV & VH | $	ext{RVI}_{	ext{Post}} - 	ext{RVI}_{	ext{Pre}}$, where $	ext{RVI} = rac{4 \cdot VH}{VV + VH}$ | **Delta Radar Vegetation Index**: RVI estimates canopy volume scattering relative to total power. Negative $	ext{dRVI}$ tracks structural canopy collapse. |
 | **10** | `dDPSVI` | VV & VH | $	ext{DPSVI}_{	ext{Post}} - 	ext{DPSVI}_{	ext{Pre}}$, where $	ext{DPSVI} = rac{VV + VH}{VV}$ | **Delta Dual-Pol SAR Vegetation Index**: Tracks shifts in total backscatter power relative to vertical co-polarization. |
+
+#### Notes on How Indices are Applied in the Script
+
+##### Mathematical Orientation: The `-1` Multiplier
+In standard remote sensing equations, some ratios yield positive numbers for a post-fire drop. In this script, all relative change formulas (`RBDrel1` and `RBDrel2`) are intentionally multiplied by `-1`. Multiplying by `-1` forces **every single one of the 10 SAR indices to produce negative values for fire damage**. This creates a single uniform rule across the entire script: **pixels with the most negative change values represent burn candidates across all bands**.
+
+##### Statistical Justification for Dynamic 10th Percentile Thresholding
+Rather than hardcoding a static cutoff (e.g., $-0.05$) that fails when seasonal soil moisture or baseline forest types change, the script calculates a **dynamic 10th percentile cutoff** across the study area using `reduceRegion`:
+
+$$	ext{percentile} = 	ext{indices.reduceRegion}(	ext{reducer} = 	ext{ee.Reducer.percentile}([10]))$$
+
+* **Statistical Logic**: Burned areas represent spatial anomalies covering a minority of the landscape. Taking the 10th percentile isolates the bottom 10% extreme drops in backscatter across the region.
+* **Region-Adaptive**: Automatically adjusts the cutoff threshold for each specific image pair and geographic region.
+
+##### Multi-Index Voting Consensus (greater than or equal to 5 Agreeing Indices)
+Because individual radar metrics can suffer from single-index noise or moisture fluctuations, the script overlays **10 distinct binary index layers**:
+
+$$	ext{burnAgreement} = \sum_{i=1}^{10} \mathbf{1}_{\{	ext{index}_i \le 	ext{percentile}_i\}}$$
+
+A pixel is classified as a **Potential Burn Scar** only when **at least 5 out of 10 indices agree** ($	ext{burnAgreement} \ge 5$). This voting consensus eliminates single-index false alarms without sacrificing detection sensitivity.
+
+##### Dynamic World Land Cover Masking
+Smooth flat surfaces (calm water bodies, paved highways, airport runways, and bare soil) reflect radar signals away from the sensor like a mirror (**specular reflection**). This produces very low backscatter returns that look identical to severe burn scars.
+
+To solve this, the script overlays Google's 10m Dynamic World land cover model and **excludes non-vegetated classes** (Water, Built, Bare, Snow/Ice by default), restricting burn mapping strictly to burnable land cover types (Trees, Grass, Flooded Veg, Crops, Shrub).
+
 
 ---
 
