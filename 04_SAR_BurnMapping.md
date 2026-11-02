@@ -84,9 +84,7 @@ In standard remote sensing equations, some ratios yield positive numbers for a p
 
 
 ##### B. Statistical Justification for Dynamic 10th Percentile Thresholding
-Rather than hardcoding a static cutoff (e.g., $-0.05$) that fails when seasonal soil moisture or baseline forest types change, the script calculates a **dynamic 10th percentile cutoff** across the study area using `reduceRegion`:
-
-$$	ext{percentile} = 	ext{indices.reduceRegion}(	ext{reducer} = 	ext{ee.Reducer.percentile}([10]))$$
+Rather than hardcoding a static cutoff (e.g., $-0.05$) that fails when seasonal soil moisture or baseline forest types change, the script calculates a **dynamic 10th percentile cutoff** across the study area using `reduceRegion`.
 
 * **Statistical Logic**: Burned areas represent spatial anomalies covering a minority of the landscape. Taking the 10th percentile isolates the bottom 10% extreme drops in backscatter across the region.
 * **Region-Adaptive**: Automatically adjusts the cutoff threshold for each specific image pair and geographic region.
@@ -95,9 +93,7 @@ $$	ext{percentile} = 	ext{indices.reduceRegion}(	ext{reducer} = 	ext{ee.Reducer.
 ##### C. Multi-Index Voting Consensus (greater than or equal to 5 Agreeing Indices)
 Because individual radar metrics can suffer from single-index noise or moisture fluctuations, the script overlays **10 distinct binary index layers**:
 
-$$	ext{burnAgreement} = \sum_{i=1}^{10} \mathbf{1}_{\{	ext{index}_i \le 	ext{percentile}_i\}}$$
-
-A pixel is classified as a **Potential Burn Scar** only when **at least 5 out of 10 indices agree** ($	ext{burnAgreement} \ge 5$). This voting consensus eliminates single-index false alarms without sacrificing detection sensitivity.
+A pixel is classified as a **Potential Burn Scar** only when **at least 5 out of 10 indices agree**. This voting consensus eliminates single-index false alarms without sacrificing detection sensitivity.
 
 
 ##### D. Dynamic World Land Cover Masking
