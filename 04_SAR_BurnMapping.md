@@ -61,8 +61,6 @@ Understanding when and why to use SAR imagery instead of optical imagery is key 
 
 ### Deep Dive: How SAR Burn Mapping & Indices Work
 
-#### Detailed Breakdown of the 10 SAR Change Indices
-
 When a wildfire burns through vegetation, it destroys leaves, twigs, and small branches. At C-band wavelengths (~5.6 cm, used by Sentinel-1), radar signals interact strongly with forest leaf canopies, twigs, and branches through **volume scattering** (multiple reflections off structural elements returning power to the satellite). Loss of dense canopy structure removes 'volume scattering', causing the radar signal to pass through or bounce away rather than returning to the satellite. As a result, post-fire radar backscatter is noticeably lower (darker) than pre-fire baseline backscatter.
 
 When a wildfire destroys the forest canopy:
@@ -72,22 +70,21 @@ When a wildfire destroys the forest canopy:
 
 Just as optical mapping uses indices like the Normalized Burn Ratio (NBR) to combine specific light bands (NIR and SWIR) into a metric of vegetation health, SAR indices combine microwave backscatter polarizations ($VV$ and $VH$) across time to track physical canopy collapse and surface moisture loss.However, while optical mapping can rely on NBR as a single standardized metric, radar backscatter responds dynamically to tree geometry, ground slope, and moisture. Because no single radar index captures every type of terrain or forest structure perfectly, the script computes 10 complementary change metrics across VH (cross-polarization, highly sensitive to canopy volume) and VV (co-polarization, sensitive to surface roughness and moisture):
 
-| # | Index Name | Polarization | Mathematical Formula | Physical & Remote Sensing Interpretation |
-| :---: | :--- | :---: | :--- | :--- |
-| **1** | `VH_RBD` | VH | $	ext{Post}_{VH} - 	ext{Pre}_{VH}$ | **Radar Burn Difference (VH)**: Absolute raw backscatter power change. Captures loss of canopy volume scattering. |
-| **2** | `VH_RBDrel1` | VH | $\left(rac{	ext{Pre}_{VH} - 	ext{Post}_{VH}}{	ext{Pre}_{VH}}
-ight) 	imes (-1)$ | **Relative Radar Burn Difference 1 (VH)**: Fractional backscatter change relative to pre-fire baseline level. |
-| **3** | `VH_RBDrel2` | VH | $\left(rac{	ext{Pre}_{VH} - 	ext{Post}_{VH}}{\sqrt{	ext{Pre}_{VH}}}
-ight) 	imes (-1)$ | **Relative Radar Burn Difference 2 (VH)**: Variance-scaled change that dampens background noise in low-return areas. |
-| **4** | `VH_RBR` | VH | $rac{	ext{Post}_{VH}}{	ext{Pre}_{VH}}$ | **Radar Burn Ratio (VH)**: Simple post-to-pre backscatter ratio. |
-| **5** | `VV_RBD` | VV | $	ext{Post}_{VV} - 	ext{Pre}_{VV}$ | **Radar Burn Difference (VV)**: Absolute raw change in vertical co-polarization. Captures surface roughness and moisture drop. |
-| **6** | `VV_RBDrel1` | VV | $\left(rac{	ext{Pre}_{VV} - 	ext{Post}_{VV}}{	ext{Pre}_{VV}}
-ight) 	imes (-1)$ | **Relative Radar Burn Difference 1 (VV)**: Fractional change in vertical co-polarization backscatter. |
-| **7** | `VV_RBDrel2` | VV | $\left(rac{	ext{Pre}_{VV} - 	ext{Post}_{VV}}{\sqrt{	ext{Pre}_{VV}}}
-ight) 	imes (-1)$ | **Relative Radar Burn Difference 2 (VV)**: Variance-scaled vertical co-polarization change. |
-| **8** | `VV_RBR` | VV | $rac{	ext{Post}_{VV}}{	ext{Pre}_{VV}}$ | **Radar Burn Ratio (VV)**: Simple post-to-pre ratio of vertical backscatter intensity. |
-| **9** | `dRVI` | VV & VH | $	ext{RVI}_{	ext{Post}} - 	ext{RVI}_{	ext{Pre}}$, where $	ext{RVI} = rac{4 \cdot VH}{VV + VH}$ | **Delta Radar Vegetation Index**: RVI estimates canopy volume scattering relative to total power. Negative $	ext{dRVI}$ tracks structural canopy collapse. |
-| **10** | `dDPSVI` | VV & VH | $	ext{DPSVI}_{	ext{Post}} - 	ext{DPSVI}_{	ext{Pre}}$, where $	ext{DPSVI} = rac{VV + VH}{VV}$ | **Delta Dual-Pol SAR Vegetation Index**: Tracks shifts in total backscatter power relative to vertical co-polarization. |
+#### Detailed Breakdown of the 10 SAR Change Indices
+
+| # | Index Name | Polarization | Formula | Remote Sensing Meaning & Description |
+| :-: | :--- | :-: | :--- | :--- |
+| **1** | `VH_RBD` | VH | $\text{Post}_{VH} - \text{Pre}_{VH}$ | **Radar Burn Difference (VH)**: Absolute raw backscatter power change. Captures loss of canopy volume scattering. |
+| **2** | `VH_RBDrel1` | VH | $((\text{Pre}_{VH} - \text{Post}_{VH}) / \text{Pre}_{VH}) \times (-1)$ | **Relative Radar Burn Difference 1 (VH)**: Fractional backscatter change relative to pre-fire baseline. |
+| **3** | `VH_RBDrel2` | VH | $((\text{Pre}_{VH} - \text{Post}_{VH}) / \sqrt{\text{Pre}_{VH}}) \times (-1)$ | **Relative Radar Burn Difference 2 (VH)**: Variance-scaled change dampening noise in low-return areas. |
+| **4** | `VH_RBR` | VH | $\text{Post}_{VH} / \text{Pre}_{VH}$ | **Radar Burn Ratio (VH)**: Simple post-to-pre backscatter ratio. |
+| **5** | `VV_RBD` | VV | $\text{Post}_{VV} - \text{Pre}_{VV}$ | **Radar Burn Difference (VV)**: Absolute change in vertical co-polarization. Captures surface roughness and moisture drop. |
+| **6** | `VV_RBDrel1` | VV | $((\text{Pre}_{VV} - \text{Post}_{VV}) / \text{Pre}_{VV}) \times (-1)$ | **Relative Radar Burn Difference 1 (VV)**: Fractional change in vertical co-polarization backscatter. |
+| **7** | `VV_RBDrel2` | VV | $((\text{Pre}_{VV} - \text{Post}_{VV}) / \sqrt{\text{Pre}_{VV}}) \times (-1)$ | **Relative Radar Burn Difference 2 (VV)**: Variance-scaled vertical co-polarization change. |
+| **8** | `VV_RBR` | VV | $\text{Post}_{VV} / \text{Pre}_{VV}$ | **Radar Burn Ratio (VV)**: Simple post-to-pre ratio of vertical backscatter intensity. |
+| **9** | `dRVI` | VV & VH | $\text{RVI}_{\text{Post}} - \text{RVI}_{\text{Pre}}$<br>*[where $\text{RVI} = \frac{4 \cdot VH}{VV + VH}$]* | **Delta Radar Vegetation Index**: RVI estimates canopy volume scattering relative to total power. Negative $\text{dRVI}$ tracks canopy collapse. |
+| **10** | `dDPSVI` | VV & VH | $\text{DPSVI}_{\text{Post}} - \text{DPSVI}_{\text{Pre}}$<br>*[where $\text{DPSVI} = \frac{VV + VH}{VV}$]* | **Delta Dual-Pol SAR Vegetation Index**: Tracks shifts in total backscatter power relative to vertical co-polarization. |
+
 
 #### Notes on How Indices are Applied in the Script
 
