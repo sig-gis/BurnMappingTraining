@@ -76,6 +76,8 @@ Just as optical mapping uses indices like the Normalized Burn Ratio (NBR) to com
 
 #### Detailed Breakdown of the 10 SAR Change Indices
 
+While there are 6 mathematical change metric formulas in total, 4 of them are calculated separately for both VH and VV polarizations (4 * 2 = 8), while the remaining 2 (dRVI and dDPSVI) directly combine VV and VH together into a single dual-polarization band each. This yields a total of 10 distinct radar change inidces (8 + 2 = 10) to be evaluated in the consensus voting system.
+
 <p align="center">
   <img src="{{ site.baseurl }}/images/sar_burn/sar_indices_table.png"  vspace="10" width="700">
 </p>
